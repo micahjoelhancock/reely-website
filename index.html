@@ -42,7 +42,7 @@
   --beige: #e6dfd0;
   --yellow: #ffb000;
   --amber: #f2b134;
-  --glyph: #e8f53a;
+  --glyph: var(--red);
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   /* Headings and body are set in Neue Haas Grotesk where it is available; Helvetica stands in until the web licence is loaded. */
   --f-body: "Neue Haas Grotesk Text Pro", "Neue Haas Grotesk Display Pro", "neue-haas-grotesk-text", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -132,7 +132,7 @@ main:focus, section:focus { outline: none; }
 .cream .fig-head { color: var(--ink-2); }
 @keyframes blink { 50% { opacity: 0; } }
 
-/* Decoding text: unresolved glyphs flicker in yellow */
+/* Decoding text: unresolved glyphs flicker in red */
 .dcv .c.g { color: var(--glyph); }
 .cream .dcv .c.g { color: var(--ink); }
 [data-fix] .c { display: inline-block; text-align: center; }
@@ -457,8 +457,8 @@ main:focus, section:focus { outline: none; }
 .snip input::placeholder { color: var(--grey); }
 .snip input:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 1px var(--red), 0 0 14px rgba(226, 56, 43, .35); }
 .snip .cta { min-width: 128px; min-height: 48px; }
-.cal-panel { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; scroll-margin-top: 88px; }
-.cal-stage { position: relative; min-height: 560px; }
+.cal-panel { width: 100%; max-width: 520px; justify-self: end; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; scroll-margin-top: 88px; }
+.cal-stage { position: relative; min-height: 400px; max-height: 460px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
 .cal-inline { position: relative; z-index: 1; width: 100%; }
 .cal-wait { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 16px; padding: 24px; text-align: center; font: 500 11px/14px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--grey); }
 .cal-wait::before { content: ""; width: 8px; height: 8px; background: var(--red); }
@@ -566,6 +566,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
   .plan-cta { margin-top: 8px; }
   .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-grid { grid-template-columns: minmax(0, 1fr); }
+  .cal-panel { justify-self: start; }
   .bill { height: 60px; }
   .bill .set { font-size: 36px; line-height: 60px; }
   .logos { height: 104px; }
@@ -609,7 +610,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
   .faq .a p { padding: 0 24px 22px 40px; }
   .snip form { flex-wrap: wrap; }
   .snip .cta { flex: 1 1 100%; }
-  .cal-stage { min-height: 520px; }
+  .cal-stage { min-height: 380px; max-height: 440px; }
   .site-foot { padding: 24px 16px 28px; }
   .social a { letter-spacing: .3em; }
   .sheet-in { padding: 12px 16px 22px; }
@@ -1974,7 +1975,7 @@ void main(){
       (function (C, A, L) { const p = (a, ar) => { a.q.push(ar); }; const d = C.document; C.Cal = C.Cal || function () { const cal = C.Cal; const ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; const s = d.createElement('script'); s.src = A; s.onerror = () => book.classList.add('cal-failed'); d.head.appendChild(s); cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === 'string') { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ['initNamespace', namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, 'https://app.cal.com/embed/embed.js', 'init');
       Cal('init', 'reely', { origin: 'https://cal.com' });
       Cal.ns.reely('inline', { elementOrSelector: '#cal-inline', calLink: 'micah-hancock/30-min-meeting-reely', config: { layout: 'month_view', theme: 'dark' } });
-      Cal.ns.reely('ui', { theme: 'dark', cssVarsPerTheme: { dark: { 'cal-brand': '#e2382b' } }, hideEventTypeDetails: false, layout: 'month_view' });
+      Cal.ns.reely('ui', { theme: 'dark', cssVarsPerTheme: { dark: { 'cal-brand': '#e2382b' } }, hideEventTypeDetails: true, layout: 'month_view' });
       Cal.ns.reely('on', { action: 'linkReady', callback: () => { ready = true; book.classList.remove('cal-failed'); book.classList.add('cal-ready'); } });
       Cal.ns.reely('on', { action: 'linkFailed', callback: () => { if (!ready) book.classList.add('cal-failed'); } });
       setTimeout(() => { if (!ready) book.classList.add('cal-failed'); }, 15000);
