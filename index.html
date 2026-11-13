@@ -690,7 +690,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
 
 <!-- 01 · HERO -->
 <section class="hero" id="top" aria-labelledby="hero-t" tabindex="-1">
-  <div class="hero-vid" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/img/eb2d4a5ec0.webp" data-src="assets/video/4bd89f7c70.mp4"></video></div>
+  <div class="hero-vid" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/img/e886e9c5af.webp" data-src="assets/video/8881609b31.mp4" data-tall-src="assets/video/4bd89f7c70.mp4" data-tall-poster="assets/img/eb2d4a5ec0.webp"></video></div>
   <div class="hero-copy">
     <h1 class="h1 hero-title" id="hero-t"><span class="ht-line">Your unlimited</span> <span class="ht-line">design &amp; content</span> <span class="ht-line">team</span></h1>
     <p class="hero-sub">Get your own team of specialized designers, video editors, and a dedicated Creative Director without the hassle of managing full-time employees.</p>
@@ -1328,6 +1328,10 @@ const LEGAL={"the-fine-print":{title:"The fine print",sub:"Terms and conditions 
     if (!blobs.has(uri)) blobs.set(uri, fetch(uri).then(r => r.blob()).then(b => URL.createObjectURL(b)).catch(() => uri));
     return blobs.get(uri);
   };
+  // Upright phones get the tall cut of the hero video, everything else the wide one
+  if (matchMedia('(orientation: portrait) and (max-width: 640px)').matches) {
+    document.querySelectorAll('video[data-tall-src]').forEach(v => { v.dataset.src = v.dataset.tallSrc; v.poster = v.dataset.tallPoster; });
+  }
   const loadVideo = (v, uri = v.dataset.src) => {
     if (!v._load) v._load = toBlob(uri).then(u => { if (!v.src) v.src = u; });
     return v._load;
