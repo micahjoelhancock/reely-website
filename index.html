@@ -256,14 +256,26 @@ main:focus, section:focus { outline: none; }
 .slip b { font: 500 13px/1 var(--f-mono); color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .stamp { margin-left: auto; padding: 4px 7px 3px; background: var(--red); color: var(--panel); font: 500 9px/11px var(--f-mono); letter-spacing: .1em; text-transform: uppercase; font-style: normal; white-space: nowrap; transition: opacity .12s, transform .32s var(--ease-back); }
 .motion .step:not(.live) .slip { opacity: 0; transform: translateX(-28px); }
-.motion .step:not(.stamped) .stamp { opacity: 0; transform: scale(1.7) rotate(-7deg); }
+.motion .step:not(.stamped) .stamp, .slip:not(.prog):not(.done) .stamp { opacity: 0; transform: scale(1.7) rotate(-7deg); }
+.slip.done .stamp { background: transparent; color: var(--red); box-shadow: inset 0 0 0 1px var(--red); }
+.slip.done b { color: var(--ink-2); }
+.step.stamped .slip { transition: transform .35s var(--ease-out), background-color .25s, box-shadow .35s; transition-delay: 0s; }
+@media (hover: hover) and (pointer: fine) {
+  .motion .step.stamped .slip:hover { transform: translateX(6px); background: #fff4f2; box-shadow: -6px 0 0 -3px var(--red), 0 6px 14px -8px rgba(226, 56, 43, .55); }
+}
 /* 02.3 output */
 .gate { position: absolute; left: 0; right: 0; top: 40px; height: 146px; }
 .gate-win { position: absolute; inset: 0; overflow: hidden; }
 .reel-strip { display: flex; gap: 8px; height: 100%; width: max-content; transform: translate3d(var(--sx, 0px), 0, 0); }
 .reel-strip figure { flex: none; width: 178px; height: 100%; overflow: hidden; background: #ddd; }
 .reel-strip img { width: 100%; height: 100%; object-fit: cover; }
-.gate-frame { position: absolute; top: -2px; bottom: -2px; left: 50%; width: 182px; margin-left: -64px; border: 1px solid var(--red); pointer-events: none; }
+.gate-frame { position: absolute; top: -2px; bottom: -2px; left: 50%; width: 182px; margin-left: -64px; border: 1px solid var(--red); pointer-events: none; transform: translate3d(var(--fx, 0px), 0, 0); transition: box-shadow .3s; }
+.gate-frame .stamp { position: absolute; right: 6px; bottom: 6px; opacity: 0; transform: scale(1.7) rotate(-7deg); }
+.gate.hot .gate-frame { box-shadow: 0 0 0 1px var(--red), 0 0 18px rgba(226, 56, 43, .35); }
+.gate.hot .gate-frame .stamp { opacity: 1; transform: none; }
+.reel-strip img { transition: transform .5s var(--ease-out), filter .4s; }
+.gate.hot .reel-strip img { filter: saturate(.55) brightness(.92); }
+.gate.hot .reel-strip figure.on img { transform: scale(1.08); filter: none; }
 .step-copy { display: grid; grid-template-columns: 66px minmax(0, 1fr); grid-template-rows: auto 1fr; padding: 11px 16px 40px 14px; border-top: 1px solid var(--hair); flex: 1; }
 .step-copy .num { grid-row: 1 / 3; font: 300 44px/48px var(--f-display); color: var(--red); }
 .step-copy h3 { margin-top: 23px; font: 500 22px/28px var(--f-body); letter-spacing: -.01em; color: var(--ink); }
@@ -744,9 +756,9 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
           <div class="fig-stage">
             <p class="ill-cap">Your queue · example</p>
             <ol class="slips">
-              <li class="slip" style="--k:0"><span class="n">01</span><b>6 UGC cutdowns</b><i class="stamp">In progress</i></li>
-              <li class="slip" style="--k:1"><span class="n">02</span><b>PDP hero images</b></li>
-              <li class="slip" style="--k:2"><span class="n">03</span><b>Retention email</b></li>
+              <li class="slip prog" style="--k:0"><span class="n">01</span><b>6 UGC cutdowns</b><i class="stamp">In progress</i></li>
+              <li class="slip" style="--k:1"><span class="n">02</span><b>PDP hero images</b><i class="stamp"></i></li>
+              <li class="slip" style="--k:2"><span class="n">03</span><b>Retention email</b><i class="stamp"></i></li>
             </ol>
           </div>
         </div>
@@ -762,7 +774,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
                 <figure><img src="assets/img/be306cb7c3.webp" width="535" height="438" alt="" loading="lazy" decoding="async"></figure>
                 <figure><img src="assets/img/12fc925cb0.webp" width="535" height="438" alt="" loading="lazy" decoding="async"></figure>
               </div></div>
-              <i class="gate-frame"></i>
+              <i class="gate-frame"><b class="stamp">Delivered</b></i>
             </div>
             <p class="ill-note mid">Delivered · 24-48 hours · revisions unlimited</p>
           </div>
@@ -1805,18 +1817,47 @@ void main(){
       setTimeout(() => q.classList.add('live'), 260);
       setTimeout(() => q.classList.add('stamped'), 1150);
     });
+    /* Point at a request and it becomes the one in progress; the ones ahead of it are marked delivered */
+    const slips = $$('.slip', q);
+    let qBack = 0;
+    const setQueue = at => slips.forEach((sl, i) => {
+      const st = $('.stamp', sl);
+      sl.classList.toggle('done', i < at); sl.classList.toggle('prog', i === at);
+      if (i <= at) st.textContent = i < at ? 'Delivered' : 'In progress';
+    });
+    slips.forEach((sl, i) => sl.addEventListener('pointerenter', e => {
+      if (e.pointerType !== 'mouse' || !motion || !q.classList.contains('stamped')) return;
+      clearTimeout(qBack); setQueue(i);
+    }));
+    $('.slips', q).addEventListener('pointerleave', () => { clearTimeout(qBack); qBack = setTimeout(() => setQueue(0), 900); });
 
     /* Output: finished work slides past the red frame in a slow loop */
     const strip = $('.reel-strip'), gate = watch($('.gate'));
     [...strip.children].forEach(f => strip.append(f.cloneNode(true)));
     [...strip.children].forEach(f => strip.append(f.cloneNode(true)));
-    let sx = 0;
+    /* The red frame follows the cursor and picks out the piece under it; the strip slows down while you look */
+    const frame = $('.gate-frame'), figs = [...strip.children], FW = 182, STEP = 186;
+    let sx = 0, fx = 0, tx = 0, hot = false, speed = 1;
+    gate.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse' || !motion) return;
+      const r = gate.getBoundingClientRect(), base = r.width / 2 - 64 + FW / 2;
+      tx = Math.max(FW / 2 + 2, Math.min(r.width - FW / 2 - 2, e.clientX - r.left)) - base;
+      if (!hot) { hot = true; gate.classList.add('hot'); }
+    });
+    gate.addEventListener('pointerleave', () => { hot = false; tx = 0; gate.classList.remove('hot'); figs.forEach(f => f.classList.remove('on')); });
     tasks.add((now, dt) => {
       if (!isNear(gate)) return;
       const sw = strip.scrollWidth / 4 + 2;
-      sx -= dt * .03;
+      speed += ((hot ? .25 : 1) - speed) * Math.min(1, dt * .006);
+      sx -= dt * .03 * speed;
       if (sx <= -sw) sx += sw;
       strip.style.setProperty('--sx', sx.toFixed(1) + 'px');
+      if (Math.abs(tx - fx) > .05) { fx += (tx - fx) * Math.min(1, dt * .014); frame.style.setProperty('--fx', fx.toFixed(1) + 'px'); }
+      if (hot) {
+        const mid = gate.clientWidth / 2 - 64 + FW / 2 + fx;
+        const k = Math.floor((mid - sx) / STEP);
+        figs.forEach((f, i) => f.classList.toggle('on', i === k));
+      }
     });
     onMotion.push(on => { if (!on) strip.style.setProperty('--sx', '-60px'); });
     if (!motion) strip.style.setProperty('--sx', '-60px');
