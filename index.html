@@ -212,8 +212,6 @@ main:focus, section:focus { outline: none; }
   border-block: 1px solid var(--rule); text-align: left; font: 400 16px/24px var(--f-body); color: var(--parch);
 }
 .hero-strip li { display: flex; align-items: center; gap: 8px; }
-.hero-strip .made { margin-left: auto; gap: 9px; font-size: 18px; color: var(--ivory); }
-.hero-strip .made em { font: 400 13px/1 var(--f-mono); font-style: normal; color: var(--red-text); }
 
 /* Hero intro: header drops in, the title decodes, the rest rises */
 .hero-sub, .hero-ctas, .hero-strip { transition: opacity .8s var(--ease-out), transform .9s var(--ease-out); }
@@ -573,7 +571,6 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
   .hero { min-height: 0; }
   .hero-copy { padding-block: 72px 56px; }
   .hero-ctas { margin-top: 44px; }
-  .hero-strip .made { margin-left: 0; width: 100%; }
   .steps, .plans { grid-template-columns: minmax(0, 1fr); gap: 16px; max-width: 520px; margin-inline: auto; }
   .plan-desc { min-height: 0; }
   .plan-cta { margin-top: 8px; }
@@ -715,7 +712,6 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
     <li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Low monthly flat-rates</li>
     <li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Dedicated Creative Director</li>
     <li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Creatives Optimized for Performance</li>
-    <li class="made">Made by humans. <em>Supercharged by AI.</em></li>
   </ul>
 </section>
 
