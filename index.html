@@ -384,6 +384,7 @@ main:focus, section:focus { outline: none; }
 .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
 .pills li { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 8px 18px 8px 16px; background: #fff; border: 1px solid var(--hair); border-radius: 4px; font: 500 16px/24px var(--f-body); }
 .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; margin-top: 56px; }
+.plans-hint { display: none; }
 .plan { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--hair); border-radius: 6px; box-shadow: 0 8px 12px rgba(20, 20, 20, .06); transition: transform .6s var(--ease-out), box-shadow .6s var(--ease-out); }
 .plan:hover { transform: translateY(-6px); box-shadow: 0 26px 44px -18px rgba(20, 20, 20, .35); }
 .plan.pop { border-color: var(--red); }
@@ -615,6 +616,40 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
   .social a { letter-spacing: .3em; }
   .sheet-in { padding: 12px 16px 22px; }
   .strip img { height: min(40svh, 300px); }
+
+  /* Compare table: everything fits on screen, no sideways scrolling */
+  .cmp-scroll { overflow: visible; }
+  .cmp-in { min-width: 0; }
+  .cmp-row { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .cmp-row > :first-child { grid-column: 1 / -1; position: static; border-right: 0; }
+  .cmp-head { height: auto; font-size: 9px; line-height: 12px; letter-spacing: .06em; }
+  .cmp-head > * { white-space: normal; text-align: center; padding: 10px 2px; overflow-wrap: anywhere; }
+  .cmp-head > :first-child { padding: 12px 16px 2px; text-align: left; }
+  .cmp-row.r, .cmp-row.r:last-child { min-height: 0; }
+  .who { padding: 16px 16px 4px; }
+  .mk { height: 52px; }
+  .cmp-row.reely > :first-child { border-right: 0; }
+  /* Plans: swipe sideways instead of three long cards stacked */
+  .plans { display: flex; gap: 12px; max-width: none; margin-inline: calc(var(--mx) * -1); padding: 4px var(--mx) 28px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--mx); overscroll-behavior-x: contain; scrollbar-width: none; }
+  .plans::-webkit-scrollbar { display: none; }
+  .plan { flex: 0 0 86%; scroll-snap-align: center; }
+  .plan:hover { transform: none; box-shadow: 0 8px 12px rgba(20, 20, 20, .06); }
+  .plans-hint { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 28px; font: 500 11px/14px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  .plans-hint + .plans { margin-top: 12px; }
+  .plan-top, .plan-tag, .plan-k, .plan-price small, .how span { font-size: 11px; }
+  /* Case studies: two per row */
+  .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .case .fig-head { height: 28px; padding: 0 9px; font-size: 9px; letter-spacing: .08em; }
+  .case .fig-head span { overflow: hidden; text-overflow: ellipsis; }
+  .case-title { padding: 12px 12px 13px; font-size: 17px; line-height: 22px; }
+  /* Comfortable tap targets */
+  .pick-tab { min-height: 40px; }
+  .foot-links { gap: 0 24px; }
+  .foot-links a, .foot-links button { display: inline-block; padding: 10px 0; }
+  .social { gap: 0 20px; }
+  .social a { display: inline-block; padding: 12px 0; }
+  .cal-foot { padding: 4px 14px; }
+  .cal-foot a { padding: 12px 0; }
 }
 @media (forced-colors: active) {
   .cta, .close, .scr-nav button, .car-btn, .pick-tab { border: 1px solid ButtonText; }
@@ -923,6 +958,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
         <li><i class="sq"></i>Pause and resume as needed</li>
       </ul>
     </header>
+    <p class="plans-hint" aria-hidden="true"><span>←</span> Swipe to compare plans <span>→</span></p>
     <ol class="plans">
       <li class="plan" data-level="2" data-speed="0.55">
         <p class="plan-top">Plan</p>
@@ -1877,6 +1913,12 @@ void main(){
     const plans = $$('.plan');
     const wrap = $('.plans');
     watch(wrap);
+    // On phones the plans swipe sideways; start on the popular one
+    const centre = () => {
+      const pop = $('.plan.pop', wrap);
+      if (pop && wrap.scrollWidth > wrap.clientWidth + 4) wrap.scrollLeft += pop.getBoundingClientRect().left - wrap.getBoundingClientRect().left - (wrap.clientWidth - pop.offsetWidth) / 2;
+    };
+    centre(); addEventListener('load', centre, { once: true });
     const state = plans.map(p => ({
       p, segs: $$('.meter i', p), L: +p.dataset.level, sp: +p.dataset.speed, lit: -1, t0: 0, boost: 1, amp: 1, hover: false, ph: Math.random() * 6,
       led: $('.led', p)
