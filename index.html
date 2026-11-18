@@ -322,6 +322,7 @@ main:focus, section:focus { outline: none; }
 .svc-img { aspect-ratio: 1; overflow: hidden; border-bottom: 1px solid var(--rule); background: #111; }
 .svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease-out); -webkit-user-drag: none; user-select: none; }
 .svc:hover .svc-img img { transform: scale(1.045); }
+.svc-vid video { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 /* Marketing card: four phone ads roll past on a loop */
 .svc-roll { background: #000; }
 .roll { display: flex; width: max-content; height: 100%; animation: roll 26s linear infinite; }
@@ -851,7 +852,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
     </li>
     <li class="svc">
       <p class="fig-head" aria-hidden="true"><span>Fig. 03.3 · Video Editing &amp; Animation</span><i class="sq"></i></p>
-      <div class="svc-img"><img src="assets/img/7d236cb84a.webp" width="800" height="800" alt="A frame from a video edit" loading="lazy" decoding="async" draggable="false"></div>
+      <div class="svc-img svc-vid"><video muted loop playsinline preload="none" poster="assets/img/85d1bbc408.webp" data-src="assets/video/446c964c4f.mp4" data-loop aria-label="Animation reel"></video></div>
       <div class="svc-foot"><h3>Video Editing &amp; Animation</h3><span class="n" aria-hidden="true">03</span><p>Motion graphics, reels, video editing</p></div>
     </li>
     <li class="svc">
