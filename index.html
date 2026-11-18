@@ -290,9 +290,7 @@ main:focus, section:focus { outline: none; }
 .logos .set { display: flex; align-items: center; gap: 62px; padding-right: 62px; flex: none; }
 .logos li { flex: none; }
 .logos img { width: auto; max-width: none; opacity: .82; transition: opacity .3s, filter .3s; }
-.logos img.mono { filter: brightness(0) invert(.94); }
 .logos li:hover img { opacity: 1; filter: brightness(1.2); }
-.logos li:hover img.mono { filter: brightness(0) invert(1); }
 
 /* ---------- 7. Carousels (services, client notes) ---------- */
 .car {
@@ -322,6 +320,23 @@ main:focus, section:focus { outline: none; }
 .svc-img { aspect-ratio: 1; overflow: hidden; border-bottom: 1px solid var(--rule); background: #111; }
 .svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease-out); -webkit-user-drag: none; user-select: none; }
 .svc:hover .svc-img img { transform: scale(1.045); }
+.svc-vid video { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+/* AI video card: the reel plays inside a phone */
+.svc-phone { display: grid; place-items: center; background: #000; container-type: size; }
+.phone { position: relative; height: 91cqh; aspect-ratio: 9 / 17.6; padding: 1.5cqh; border-radius: 8.6cqh; background: linear-gradient(135deg, #e9e9ec, #8f9096 28%, #d9dadd 52%, #77787d 76%, #cfd0d4); box-shadow: 0 0 0 1px #2a2a2c, 0 2cqh 6cqh rgba(0, 0, 0, .6); }
+.phone::before, .phone::after { content: ""; position: absolute; width: .8cqh; border-radius: .4cqh; background: #9a9ba0; }
+.phone::before { left: -.7cqh; top: 20%; height: 14%; box-shadow: 0 -9cqh 0 0 #9a9ba0; clip-path: inset(-12cqh 0 0 0); }
+.phone::after { right: -.7cqh; top: 27%; height: 12%; }
+.phone-screen { position: relative; z-index: 1; width: 100%; height: 100%; overflow: hidden; border-radius: 7.2cqh; background: #000; box-shadow: 0 0 0 .7cqh #000; }
+.phone-screen video { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.phone-island { position: absolute; left: 50%; top: 2.6cqh; width: 31%; height: 4.6cqh; border-radius: 3cqh; background: #000; transform: translateX(-50%); }
+/* Marketing card: four phone ads roll past on a loop */
+.svc-roll { background: #000; }
+.roll { display: flex; box-sizing: border-box; width: max-content; height: 100%; padding-block: 24px; animation: roll 26s linear infinite; }
+.roll-set { display: flex; flex: none; height: 100%; }
+.svc-roll .roll img, .svc:hover .svc-roll .roll img { flex: none; width: auto; height: 100%; margin-right: 44px; object-fit: contain; transform: none; }
+@keyframes roll { to { transform: translate3d(-50%, 0, 0); } }
+.still .roll { animation: none; transform: translate3d(22px, 0, 0); }
 .svc-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto; padding: 20px 19px 32px; }
 .svc-foot h3 { font: 500 22px/28px var(--f-body); letter-spacing: -.01em; color: var(--ivory); }
 .svc-foot p { grid-column: 1; margin-top: 6px; font: 400 14px/21px var(--f-body); color: var(--grey); }
@@ -458,9 +473,23 @@ main:focus, section:focus { outline: none; }
 /* ---------- 13. Contact ---------- */
 .contact-grid { display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 624px); justify-content: space-between; gap: 48px; margin-top: 40px; align-items: start; }
 .contact .h1 { margin-top: 0; }
+/* Small looping film panels beside the FAQ and Contact titles */
+.vfig { position: relative; overflow: hidden; border: 1px solid var(--rule); border-radius: 6px; background: #0b0a0a; }
+.vfig video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.vfig .fig-head { border-bottom-color: var(--rule); }
+.faq-top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; align-items: end; margin-top: 40px; }
+.faq-top .h2 { margin-top: 0; }
+.vfig-wide { height: clamp(96px, 9vw, 124px); }
+.vfig-wide video { object-position: 50% 38%; }
+.vfig-tag { position: absolute; inset: 0 0 auto 0; display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; font: 500 11px/14px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--parch); text-shadow: 0 1px 2px rgba(0, 0, 0, .7); pointer-events: none; }
+.end-top { display: flex; align-items: flex-start; gap: clamp(16px, 2.4vw, 32px); }
+.end-top .h1 { flex: none; }
+.vfig-box { display: flex; flex-direction: column; flex: none; align-self: flex-start; height: calc(clamp(44px, 8.34vw, 120px) * 1.8); aspect-ratio: 10 / 11; }
+.vfig-win { flex: 1; min-height: 0; }
 .end-body { margin-top: 24px; max-width: 440px; font: 400 18px/28.8px var(--f-body); color: var(--parch-78); }
 .end-rule { height: 1px; margin-top: 48px; background: var(--rule); }
 .end-note { margin-top: 32px; font: 400 16px/25.6px var(--f-body); color: var(--grey); }
+.end-cta { margin-top: 32px; }
 .snip { margin-top: 30px; }
 .snip .h3 { color: var(--ivory); }
 .snip form { display: flex; gap: 8px; margin-top: 16px; }
@@ -469,7 +498,7 @@ main:focus, section:focus { outline: none; }
 .snip input:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 1px var(--red), 0 0 14px rgba(226, 56, 43, .35); }
 .snip .cta { min-width: 128px; min-height: 48px; }
 .cal-panel { width: 100%; max-width: 520px; justify-self: end; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; scroll-margin-top: 88px; }
-.cal-stage { position: relative; min-height: 400px; max-height: 460px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
+.cal-stage { position: relative; min-height: 480px; }
 .cal-inline { position: relative; z-index: 1; width: 100%; }
 .cal-wait { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 16px; padding: 24px; text-align: center; font: 500 11px/14px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--grey); }
 .cal-wait::before { content: ""; width: 8px; height: 8px; background: var(--red); }
@@ -615,12 +644,15 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
   .h2 .ln, .h2 .ln > span { display: inline; }
   .motion .sec-head:not(.in) .h2 .ln > span { transform: none; }
   .faq { grid-template-columns: minmax(0, 1fr); margin-top: 32px; }
+  .faq-top { grid-template-columns: minmax(0, 1fr); row-gap: 24px; margin-top: 28px; }
+  .vfig-wide { height: 88px; }
+  .vfig-box .fig-head { display: none; }
   .faq-col + .faq-col details:first-child { border-top: 0; }
   .faq .q { font-size: 17px; }
   .faq .a p { padding: 0 24px 22px 40px; }
   .snip form { flex-wrap: wrap; }
   .snip .cta { flex: 1 1 100%; }
-  .cal-stage { min-height: 380px; max-height: 440px; }
+  .cal-stage { min-height: 420px; }
   .site-foot { padding: 24px 16px 28px; }
   .social a { letter-spacing: .3em; }
   .sheet-in { padding: 12px 16px 22px; }
@@ -720,7 +752,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
   <div class="wrap">
     <header class="sec-head center">
       <p class="label" data-decode><span class="idx">02 /</span> <span>Why Reely</span></p>
-      <h2 class="h1" id="why-t"><span class="ln"><span>One subscription.</span></span> <span class="ln"><span>A whole creative</span></span> <span class="ln"><span>department.</span></span></h2>
+      <h2 class="h1" id="why-t"><span class="ln"><span>Your own creative</span></span> <span class="ln"><span>department.</span></span> <span class="ln"><span>Instantly.</span></span></h2>
       <p class="h3 fade">Freelancers ghost. Agencies overcharge.<br>Hiring takes months.</p>
       <p class="lede">Reely gives you a dedicated, AI-powered creative team that feels like it’s your own. Ready tomorrow. Oh, and it's less than one full-time hire. We replace the need to juggle freelancers and or carry the overhead of in-house staff for one flat monthly fee, with quality and turnaround time so good you'll never go back.</p>
     </header>
@@ -800,8 +832,8 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
         <li><img src="assets/img/6f5dd4fe96.svg" width="112" height="35" alt="Coca-Cola" decoding="async"></li>
         <li><img src="assets/img/c90451d7d1.svg" width="140" height="30" alt="Guard" decoding="async"></li>
         <li><img src="assets/img/6b1b46b14c.svg" width="182" height="34" alt="Smoothie King" decoding="async"></li>
-        <li><img class="mono" src="assets/img/736f6e7bba.webp" width="163" height="30" alt="Ash &amp; Erie" decoding="async"></li>
-        <li><img class="mono" src="assets/img/1b93660e2d.webp" width="223" height="30" alt="Athleta" decoding="async"></li>
+        <li><img src="assets/img/c7095260fa.webp" width="163" height="30" alt="Ash &amp; Erie" decoding="async"></li>
+        <li><img src="assets/img/fe2c34d4e4.webp" width="223" height="30" alt="Athleta" decoding="async"></li>
       </ul>
     </div>
   </div>
@@ -817,19 +849,19 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
   </div>
   <ol class="car" tabindex="0" aria-label="Services, scroll sideways">
     <li class="svc">
-      <p class="fig-head" aria-hidden="true"><span>Fig. 03.1 · Brand Identity</span><i class="sq"></i></p>
-      <div class="svc-img"><img src="assets/img/f4157f6d31.webp" width="796" height="796" alt="Brand identity system for Endorsable" loading="lazy" decoding="async" draggable="false"></div>
-      <div class="svc-foot"><h3>Brand Identity</h3><span class="n" aria-hidden="true">01</span><p>Logos, guidelines, visual systems</p></div>
+      <p class="fig-head" aria-hidden="true"><span>Fig. 03.1 · Digital Ads</span><i class="sq"></i></p>
+      <div class="svc-img svc-roll"><div class="roll"><div class="roll-set"><img src="assets/img/db037532d5.webp" width="414" height="900" alt="Monti Coolers ad: packs into its own pouch" loading="lazy" decoding="async" draggable="false"><img src="assets/img/899e8fd0c6.webp" width="414" height="900" alt="Grayers ad: weekends, weekdays, one jacket" loading="lazy" decoding="async" draggable="false"><img src="assets/img/d1d4ccefb6.webp" width="414" height="900" alt="Saturday Sundae ad: the full spread" loading="lazy" decoding="async" draggable="false"><img src="assets/img/20313ff355.webp" width="414" height="900" alt="College Nation app ad: college gear in one tap" loading="lazy" decoding="async" draggable="false"></div><div class="roll-set" aria-hidden="true"><img src="assets/img/db037532d5.webp" width="414" height="900" alt="" loading="lazy" decoding="async" draggable="false"><img src="assets/img/899e8fd0c6.webp" width="414" height="900" alt="" loading="lazy" decoding="async" draggable="false"><img src="assets/img/d1d4ccefb6.webp" width="414" height="900" alt="" loading="lazy" decoding="async" draggable="false"><img src="assets/img/20313ff355.webp" width="414" height="900" alt="" loading="lazy" decoding="async" draggable="false"></div></div></div>
+      <div class="svc-foot"><h3>Digital Ads</h3><span class="n" aria-hidden="true">01</span><p>Ads optimized for performance</p></div>
     </li>
     <li class="svc">
-      <p class="fig-head" aria-hidden="true"><span>Fig. 03.2 · Web &amp; Digital</span><i class="sq"></i></p>
+      <p class="fig-head" aria-hidden="true"><span>Fig. 03.2 · Web &amp; Email Design</span><i class="sq"></i></p>
       <div class="svc-img"><img src="assets/img/77b9610c7f.webp" width="796" height="796" alt="Website design shown on a laptop" loading="lazy" decoding="async" draggable="false"></div>
-      <div class="svc-foot"><h3>Web &amp; Digital</h3><span class="n" aria-hidden="true">02</span><p>Sites, UI/UX, landing pages</p></div>
+      <div class="svc-foot"><h3>Web &amp; Email Design</h3><span class="n" aria-hidden="true">02</span><p>Sites, UI/UX, landing pages</p></div>
     </li>
     <li class="svc">
-      <p class="fig-head" aria-hidden="true"><span>Fig. 03.3 · Marketing Design</span><i class="sq"></i></p>
-      <div class="svc-img"><img src="assets/img/e4a98cc463.webp" width="796" height="796" alt="Mobile ad creative on two phones" loading="lazy" decoding="async" draggable="false"></div>
-      <div class="svc-foot"><h3>Marketing Design</h3><span class="n" aria-hidden="true">03</span><p>Social, ads, email, pitch decks</p></div>
+      <p class="fig-head" aria-hidden="true"><span>Fig. 03.3 · Video Editing &amp; Animation</span><i class="sq"></i></p>
+      <div class="svc-img svc-vid"><video muted loop playsinline preload="none" poster="assets/img/85d1bbc408.webp" data-src="assets/video/446c964c4f.mp4" data-loop aria-label="Animation reel"></video></div>
+      <div class="svc-foot"><h3>Video Editing &amp; Animation</h3><span class="n" aria-hidden="true">03</span><p>Motion graphics, reels, video editing</p></div>
     </li>
     <li class="svc">
       <p class="fig-head" aria-hidden="true"><span>Fig. 03.4 · Print &amp; Packaging</span><i class="sq"></i></p>
@@ -837,14 +869,14 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
       <div class="svc-foot"><h3>Print &amp; Packaging</h3><span class="n" aria-hidden="true">04</span><p>Packaging, merch, brochures</p></div>
     </li>
     <li class="svc">
-      <p class="fig-head" aria-hidden="true"><span>Fig. 03.5 · Content &amp; Video</span><i class="sq"></i></p>
-      <div class="svc-img"><img src="assets/img/7d236cb84a.webp" width="800" height="800" alt="A frame from a video edit" loading="lazy" decoding="async" draggable="false"></div>
-      <div class="svc-foot"><h3>Content &amp; Video</h3><span class="n" aria-hidden="true">05</span><p>Motion graphics, reels, video editing</p></div>
+      <p class="fig-head" aria-hidden="true"><span>Fig. 03.5 · Brand Identity</span><i class="sq"></i></p>
+      <div class="svc-img"><img src="assets/img/f4157f6d31.webp" width="796" height="796" alt="Brand identity system for Endorsable" loading="lazy" decoding="async" draggable="false"></div>
+      <div class="svc-foot"><h3>Brand Identity</h3><span class="n" aria-hidden="true">05</span><p>Logos, guidelines, visual systems</p></div>
     </li>
     <li class="svc">
-      <p class="fig-head" aria-hidden="true"><span>Fig. 03.6 · AI Content</span><i class="sq"></i></p>
-      <div class="svc-img"><img src="assets/img/c130baa636.webp" width="800" height="800" alt="AI-generated product content" loading="lazy" decoding="async" draggable="false"></div>
-      <div class="svc-foot"><h3>AI Content</h3><span class="n" aria-hidden="true">06</span><p>Product renders, CGI, pre-launch</p></div>
+      <p class="fig-head" aria-hidden="true"><span>Fig. 03.6 · AI Video Content</span><i class="sq"></i></p>
+      <div class="svc-img svc-phone"><div class="phone"><div class="phone-screen"><video muted loop playsinline preload="none" poster="assets/img/2c9b9f8ab9.webp" data-src="assets/video/29d729529c.mp4" data-loop aria-label="AI video reel"></video><i class="phone-island"></i></div></div></div>
+      <div class="svc-foot"><h3>AI Video Content</h3><span class="n" aria-hidden="true">06</span><p>Realistic UGC, product video, pixar style</p></div>
     </li>
     <li class="svc">
       <p class="fig-head" aria-hidden="true"><span>Fig. 03.7 · 3D &amp; Rendering</span><i class="sq"></i></p>
@@ -1096,7 +1128,13 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
   <div class="wrap">
     <header class="sec-head">
       <p class="label" data-decode><span class="idx">07 /</span> <span>FAQ</span></p>
-      <h2 class="h2" id="faq-t"><span class="ln"><span>Frequently Asked</span></span> <span class="ln"><span>Questions</span></span></h2>
+      <div class="faq-top">
+        <h2 class="h2" id="faq-t"><span class="ln"><span>Frequently Asked</span></span> <span class="ln"><span>Questions</span></span></h2>
+        <div class="vfig vfig-wide fade" aria-hidden="true">
+          <video muted loop playsinline preload="none" poster="assets/img/7099dd873d.webp" data-src="assets/video/9efed86731.mp4" data-loop></video>
+          <p class="vfig-tag"><span>Fig. 07.1</span><i class="sq"></i></p>
+        </div>
+      </div>
     </header>
     <div class="faq">
       <div class="faq-col">
@@ -1121,10 +1159,17 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
     <div class="sec-head"><p class="label" data-decode><span class="idx">08 /</span> <span>Contact</span></p></div>
     <div class="contact-grid">
       <div class="sec-head">
-        <h2 class="h1" id="end-t"><span class="ln"><span>Get in</span></span> <span class="ln"><span>touch</span></span></h2>
+        <div class="end-top">
+          <h2 class="h1" id="end-t"><span class="ln"><span>Get in</span></span> <span class="ln"><span>touch</span></span></h2>
+          <div class="vfig vfig-box fade" aria-hidden="true">
+            <p class="fig-head"><span>Fig. 08.1</span><i class="sq"></i></p>
+            <div class="vfig-win"><video muted loop playsinline preload="none" poster="assets/img/c0a63a2aa1.webp" data-src="assets/video/9287ccb642.mp4" data-loop></video></div>
+          </div>
+        </div>
         <p class="end-body fade">Schedule a short chat with our Director to see if Reely is a good fit your company.</p>
         <div class="end-rule fade" aria-hidden="true"></div>
         <p class="end-note fade">Join the Reely family—where every click is a journey, and every journey is jampacked with the joy of conversion. Follow us into the future of e-commerce, where your brand is the star, and the conversions never stop.</p>
+        <p class="end-cta fade"><a class="cta cta-line" data-magnet href="mailto:micah@reely.studio">Email Our Director <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
         <!-- Newsletter sign-up: built to the design, switched off until there is somewhere to send sign-ups. Remove "hidden" and give the form an action to turn it on. -->
         <div class="snip fade" hidden>
           <h3 class="h3">Subscribe for Snippets</h3>
@@ -1344,6 +1389,12 @@ const LEGAL={"the-fine-print":{title:"The fine print",sub:"Terms and conditions 
     if (!v._load) v._load = toBlob(uri).then(u => { if (!v.src) v.src = u; });
     return v._load;
   };
+  $$('video[data-loop]').forEach(v => {
+    let seen = false;
+    const sync = () => { if (seen && motion) loadVideo(v).then(() => { if (seen && motion) v.play().catch(() => {}); }); else v.pause(); };
+    new IntersectionObserver(([e]) => { seen = e.isIntersecting; sync(); }, { rootMargin: '10% 0px' }).observe(v);
+    onMotion.push(sync);
+  });
   const VERT = 'attribute vec2 p;varying vec2 vUv;void main(){vUv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
   /* An LED board: the text is sampled once per LED, so any font becomes a dot matrix.
      The pointer is a magnifying glass; scroll speed splits the colour. */
