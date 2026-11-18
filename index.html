@@ -731,7 +731,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
 
 <!-- 01 · HERO -->
 <section class="hero" id="top" aria-labelledby="hero-t" tabindex="-1">
-  <div class="hero-vid" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/img/e886e9c5af.webp" data-src="assets/video/8881609b31.mp4" data-tall-src="assets/video/4bd89f7c70.mp4" data-tall-poster="assets/img/eb2d4a5ec0.webp"></video></div>
+  <div class="hero-vid" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/img/e886e9c5af.webp" data-src="assets/video/8881609b31.mp4" data-tall-src="assets/video/9efed86731.mp4" data-tall-poster="assets/img/7099dd873d.webp"></video></div>
   <div class="hero-copy">
     <h1 class="h1 hero-title" id="hero-t"><span class="ht-line">Your unlimited</span> <span class="ht-line">design &amp; content</span> <span class="ht-line">team</span></h1>
     <p class="hero-sub">Get your own team of specialized designers, video editors, and a dedicated Creative Director without the hassle of managing full-time employees.</p>
@@ -1282,6 +1282,8 @@ const LEGAL={"the-fine-print":{title:"The fine print",sub:"Terms and conditions 
 
   /* ---------- Frame loop: one rAF drives everything that moves ---------- */
   const tasks = new Set();
+  /* The scrolling banners keep moving even when the rest of the page is still */
+  const calm = new Set();
   let rafId = 0, last = 0;
   /* Tasks read layout through R(el). Registered elements are measured at the top of the frame, before any
      task writes styles, so the frame never forces a second layout. */
@@ -1291,10 +1293,10 @@ const LEGAL={"the-fine-print":{title:"The fine print",sub:"Terms and conditions 
     const dt = Math.min(64, now - last || 16); last = now;
     rects.clear();
     for (const el of measured) if (near.get(el)) R(el);
-    for (const t of tasks) t(now, dt);
+    for (const t of (motion ? tasks : calm)) t(now, dt);
     rafId = requestAnimationFrame(frame);
   };
-  const startLoop = () => { if (!rafId && motion && !document.hidden) { last = performance.now(); rafId = requestAnimationFrame(frame); } };
+  const startLoop = () => { if (!rafId && !document.hidden) { last = performance.now(); rafId = requestAnimationFrame(frame); } };
   const stopLoop = () => { cancelAnimationFrame(rafId); rafId = 0; };
   document.addEventListener('visibilitychange', () => (document.hidden ? stopLoop() : startLoop()));
 
@@ -1645,7 +1647,7 @@ void main(){
     const box = watch(track.parentElement);
     box.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') slowT = o.hold; });
     box.addEventListener('pointerleave', () => { slowT = 1; });
-    tasks.add((now, dt) => {
+    const run = (now, dt) => {
       if (!isNear(box) || !w || box.classList.contains('gl')) return;
       if (o.follow && Math.abs(S.vy) > 40) dir = S.vy > 0 ? -1 : 1;
       slow = lerp(slow, slowT, .1);
@@ -1660,8 +1662,9 @@ void main(){
         skew = lerp(skew, clamp(-S.vy / 220, -9, 9), .12);
         track.style.setProperty('--skew', skew.toFixed(2) + 'deg');
       }
-    });
-    onMotion.push(on => { if (!on) { track.style.setProperty('--x', '0px'); track.style.setProperty('--skew', '0deg'); } });
+    };
+    tasks.add(run); calm.add(run);
+    onMotion.push(on => { if (!on) track.style.setProperty('--skew', '0deg'); });
   };
   /* Logos: right to left, about 40 seconds a loop; hovering pauses the row */
   marquee($('[data-marquee="logos"]'), { loop: 40, hold: 0 });
@@ -1715,7 +1718,7 @@ void main(){
       if (!motion) { st.mz = 1; draw(performance.now()); }
     });
     bill.addEventListener('pointerleave', () => { st.tz = 0; st.slowT = 1; if (!motion) { st.mz = 0; draw(performance.now()); } });
-    tasks.add((now, dt) => {
+    const run = (now, dt) => {
       if (!st.ready || !isNear(bill)) return;
       if (Math.abs(S.vy) > 40) st.dir = S.vy > 0 ? 1 : -1;
       st.slow = lerp(st.slow, st.slowT, .08);
@@ -1725,7 +1728,8 @@ void main(){
       st.rgb = lerp(st.rgb, clamp(Math.abs(S.vy) / 420, 0, 2.6), .15);
       st.mz = lerp(st.mz, st.tz, .12);
       draw(now);
-    });
+    };
+    tasks.add(run); calm.add(run);
     onMotion.push(on => { if (!on) { st.skew = 0; st.rgb = 0; st.mz = 0; draw(performance.now()); } });
   });
 
@@ -2200,7 +2204,8 @@ void main(){
     root.classList.remove('intro');
     Smooth.enable(on && fine.matches);
     onMotion.forEach(f => f(on));
-    if (on) startLoop(); else { stopLoop(); head.classList.remove('away'); }
+    startLoop();
+    if (!on) head.classList.remove('away');
   };
   onChange(reduce, () => { if (store('reely-motion') === null) setMotion(!reduce.matches); });
   onChange(fine, () => Smooth.enable(motion && fine.matches));
