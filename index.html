@@ -423,7 +423,7 @@ main:focus, section:focus { outline: none; }
 .plan-price small, .how span { font: 500 10px/14px var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
 .plan .led { align-items: center; justify-content: center; min-width: 176px; height: 56px; padding: 0 10px; border: 1px solid var(--hair); border-radius: 4px; background: var(--ivory); text-shadow: 0 0 8px rgba(226, 56, 43, .22); }
 .plan-k { font: 500 10px/14px var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: #cf2e22; }
-.how { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; margin-top: 12px; }
+.how { margin-top: 12px; }
 .how b { display: block; font: 500 30px/40px var(--f-body); letter-spacing: -.01em; color: var(--ink); white-space: nowrap; }
 .how span { display: block; margin-top: 4px; }
 .meter { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; margin-top: 18px; }
@@ -627,6 +627,9 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
   .site-foot { grid-template-columns: minmax(0, 1fr); gap: 20px; }
 }
 @media (max-width: 640px) {
+  /* Phones: the Collaboration list is dropped from the plan cards to keep them short */
+  .plan-sec.last { display: none; }
+  .plan-cta { margin-top: 24px; }
   .site-head { padding: 0 16px; }
   .sec { padding: 56px 0 64px; }
   .notes { padding: 64px 0; }
