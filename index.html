@@ -323,6 +323,15 @@ main:focus, section:focus { outline: none; }
 .svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease-out); -webkit-user-drag: none; user-select: none; }
 .svc:hover .svc-img img { transform: scale(1.045); }
 .svc-vid video { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+/* AI video card: the reel plays inside a phone */
+.svc-phone { display: grid; place-items: center; background: #000; container-type: size; }
+.phone { position: relative; height: 91cqh; aspect-ratio: 9 / 17.6; padding: 1.5cqh; border-radius: 8.6cqh; background: linear-gradient(135deg, #e9e9ec, #8f9096 28%, #d9dadd 52%, #77787d 76%, #cfd0d4); box-shadow: 0 0 0 1px #2a2a2c, 0 2cqh 6cqh rgba(0, 0, 0, .6); }
+.phone::before, .phone::after { content: ""; position: absolute; width: .8cqh; border-radius: .4cqh; background: #9a9ba0; }
+.phone::before { left: -.7cqh; top: 20%; height: 14%; box-shadow: 0 -9cqh 0 0 #9a9ba0; clip-path: inset(-12cqh 0 0 0); }
+.phone::after { right: -.7cqh; top: 27%; height: 12%; }
+.phone-screen { position: relative; z-index: 1; width: 100%; height: 100%; overflow: hidden; border-radius: 7.2cqh; background: #000; box-shadow: 0 0 0 .7cqh #000; }
+.phone-screen video { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.phone-island { position: absolute; left: 50%; top: 2.6cqh; width: 31%; height: 4.6cqh; border-radius: 3cqh; background: #000; transform: translateX(-50%); }
 /* Marketing card: four phone ads roll past on a loop */
 .svc-roll { background: #000; }
 .roll { display: flex; width: max-content; height: 100%; animation: roll 26s linear infinite; }
@@ -867,7 +876,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
     </li>
     <li class="svc">
       <p class="fig-head" aria-hidden="true"><span>Fig. 03.6 · AI Video Content</span><i class="sq"></i></p>
-      <div class="svc-img"><img src="assets/img/c130baa636.webp" width="800" height="800" alt="AI-generated product content" loading="lazy" decoding="async" draggable="false"></div>
+      <div class="svc-img svc-phone"><div class="phone"><div class="phone-screen"><video muted loop playsinline preload="none" poster="assets/img/2c9b9f8ab9.webp" data-src="assets/video/29d729529c.mp4" data-loop aria-label="AI video reel"></video><i class="phone-island"></i></div></div></div>
       <div class="svc-foot"><h3>AI Video Content</h3><span class="n" aria-hidden="true">06</span><p>Realistic UGC, product video, pixar style</p></div>
     </li>
     <li class="svc">
