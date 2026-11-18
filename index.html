@@ -334,7 +334,7 @@ main:focus, section:focus { outline: none; }
 .phone-island { position: absolute; left: 50%; top: 2.6cqh; width: 31%; height: 4.6cqh; border-radius: 3cqh; background: #000; transform: translateX(-50%); }
 /* Marketing card: four phone ads roll past on a loop */
 .svc-roll { background: #000; }
-.roll { display: flex; width: max-content; height: 100%; animation: roll 26s linear infinite; }
+.roll { display: flex; box-sizing: border-box; width: max-content; height: 100%; padding-block: 24px; animation: roll 26s linear infinite; }
 .roll-set { display: flex; flex: none; height: 100%; }
 .svc-roll .roll img, .svc:hover .svc-roll .roll img { flex: none; width: auto; height: 100%; margin-right: 44px; object-fit: contain; transform: none; }
 @keyframes roll { to { transform: translate3d(-50%, 0, 0); } }
