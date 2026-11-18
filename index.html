@@ -200,6 +200,11 @@ main:focus, section:focus { outline: none; }
   mask-image: radial-gradient(circle clamp(190px, 36vw, 380px) at var(--lx, 30%) var(--ly, 48%), #000 0, rgba(0, 0, 0, .85) 45%, transparent 100%);
 }
 .still .hero-vid, html:not(.js) .hero-vid { opacity: 1; }
+/* Upright phones: a still LED texture behind the headline instead of the film */
+@media (orientation: portrait) and (max-width: 640px) {
+  .hero { background: #151515 url(assets/img/5551d7c519.webp) center / cover no-repeat; }
+  .hero-vid, .hero::after { display: none; }
+}
 .hero-vid video { width: 100%; height: 100%; object-fit: cover; }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 72% 72% at 50% 50%, transparent 55%, rgba(0, 0, 0, .28)); }
 .hero-copy { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 120px var(--mx) 32px; }
@@ -423,7 +428,7 @@ main:focus, section:focus { outline: none; }
 .plan-price small, .how span { font: 500 10px/14px var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
 .plan .led { align-items: center; justify-content: center; min-width: 176px; height: 56px; padding: 0 10px; border: 1px solid var(--hair); border-radius: 4px; background: var(--ivory); text-shadow: 0 0 8px rgba(226, 56, 43, .22); }
 .plan-k { font: 500 10px/14px var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: #cf2e22; }
-.how { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; margin-top: 12px; }
+.how { margin-top: 12px; }
 .how b { display: block; font: 500 30px/40px var(--f-body); letter-spacing: -.01em; color: var(--ink); white-space: nowrap; }
 .how span { display: block; margin-top: 4px; }
 .meter { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; margin-top: 18px; }
@@ -627,6 +632,9 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
   .site-foot { grid-template-columns: minmax(0, 1fr); gap: 20px; }
 }
 @media (max-width: 640px) {
+  /* Phones: the Collaboration list is dropped from the plan cards to keep them short */
+  .plan-sec.last { display: none; }
+  .plan-cta { margin-top: 24px; }
   .site-head { padding: 0 16px; }
   .sec { padding: 56px 0 64px; }
   .notes { padding: 64px 0; }
@@ -731,7 +739,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
 
 <!-- 01 · HERO -->
 <section class="hero" id="top" aria-labelledby="hero-t" tabindex="-1">
-  <div class="hero-vid" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/img/e886e9c5af.webp" data-src="assets/video/8881609b31.mp4" data-tall-src="assets/video/9efed86731.mp4" data-tall-poster="assets/img/7099dd873d.webp"></video></div>
+  <div class="hero-vid" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/img/e886e9c5af.webp" data-src="assets/video/8881609b31.mp4"></video></div>
   <div class="hero-copy">
     <h1 class="h1 hero-title" id="hero-t"><span class="ht-line">Your own creative</span> <span class="ht-line">department.</span> <span class="ht-line">Instantly.</span></h1>
     <p class="hero-sub">Get your own team of specialized designers, video editors, and a dedicated Creative Director without the hassle of managing full-time employees.</p>
@@ -741,9 +749,9 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
     </div>
   </div>
   <ul class="hero-strip">
-    <li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Low monthly flat-rates</li>
-    <li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Dedicated Creative Director</li>
-    <li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Creatives Optimized for Performance</li>
+    <li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Your own creative team</li>
+    <li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>24 - 48 hr turnaround</li>
+    <li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Pause and resume as needed</li>
   </ul>
 </section>
 
@@ -994,7 +1002,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
       <p class="h3 fade">Choose a plan that fits your needs</p>
       <ul class="pills fade">
         <li><i class="sq"></i>Your own creative team</li>
-        <li><i class="sq"></i>Pay one monthly price</li>
+        <li><i class="sq"></i>24 - 48 hr turnaround</li>
         <li><i class="sq"></i>Pause and resume as needed</li>
       </ul>
     </header>
@@ -1009,7 +1017,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
         </div>
         <div class="plan-sec">
           <p class="plan-k">How it works</p>
-          <dl class="how"><div><dt class="sr-only">Requests per week</dt><dd><b>1 - 2</b><span aria-hidden="true">Requests per week</span></dd></div><div><dt class="sr-only">Turnaround</dt><dd><b>24 - 48hr</b><span aria-hidden="true">Turnaround</span></dd></div></dl>
+          <dl class="how"><div><dt class="sr-only">Requests per week</dt><dd><b>1 - 2</b><span aria-hidden="true">Requests per week</span></dd></div></dl>
           <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <div class="plan-sec">
@@ -1032,7 +1040,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
         </div>
         <div class="plan-sec">
           <p class="plan-k">How it works</p>
-          <dl class="how"><div><dt class="sr-only">Requests per week</dt><dd><b>3 - 5</b><span aria-hidden="true">Requests per week</span></dd></div><div><dt class="sr-only">Turnaround</dt><dd><b>24 - 48hr</b><span aria-hidden="true">Turnaround</span></dd></div></dl>
+          <dl class="how"><div><dt class="sr-only">Requests per week</dt><dd><b>3 - 5</b><span aria-hidden="true">Requests per week</span></dd></div></dl>
           <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <div class="plan-sec">
@@ -1054,7 +1062,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
         </div>
         <div class="plan-sec">
           <p class="plan-k">How it works</p>
-          <dl class="how"><div><dt class="sr-only">Requests per week</dt><dd><b>7 - 10</b><span aria-hidden="true">Requests per week</span></dd></div><div><dt class="sr-only">Turnaround</dt><dd><b>24 - 48hr</b><span aria-hidden="true">Turnaround</span></dd></div></dl>
+          <dl class="how"><div><dt class="sr-only">Requests per week</dt><dd><b>7 - 10</b><span aria-hidden="true">Requests per week</span></dd></div></dl>
           <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <div class="plan-sec">
@@ -1383,10 +1391,8 @@ const LEGAL={"the-fine-print":{title:"The fine print",sub:"Terms and conditions 
     if (!blobs.has(uri)) blobs.set(uri, fetch(uri).then(r => r.blob()).then(b => URL.createObjectURL(b)).catch(() => uri));
     return blobs.get(uri);
   };
-  // Upright phones get the tall cut of the hero video, everything else the wide one
-  if (matchMedia('(orientation: portrait) and (max-width: 640px)').matches) {
-    document.querySelectorAll('video[data-tall-src]').forEach(v => { v.dataset.src = v.dataset.tallSrc; v.poster = v.dataset.tallPoster; });
-  }
+  // Upright phones show a still texture in the hero, so the hero film is never loaded there
+  const tallPhone = matchMedia('(orientation: portrait) and (max-width: 640px)');
   const loadVideo = (v, uri = v.dataset.src) => {
     if (!v._load) v._load = toBlob(uri).then(u => { if (!v.src) v.src = u; });
     return v._load;
@@ -1598,7 +1604,7 @@ void main(){
     const p = { x: 0, y: 0, tx: 0, ty: 0, o: 0, to: 0, set: false };
     let visible = false, w = hero.clientWidth, h = hero.clientHeight;
     new ResizeObserver(() => { w = hero.clientWidth; h = hero.clientHeight; }).observe(hero);
-    const play = () => { loadVideo(vid).then(() => { if (motion && visible) vid.play().catch(() => {}); }); };
+    const play = () => { if (tallPhone.matches) return; loadVideo(vid).then(() => { if (motion && visible) vid.play().catch(() => {}); }); };
     new IntersectionObserver(([e]) => {
       visible = e.isIntersecting;
       if (visible && motion) play(); else vid.pause();
