@@ -30,16 +30,11 @@
 ]}
 </script>
 <script>
-/* Old WordPress links (/privacy-policy, /case-studies/fomin, ...) redirect to /#privacy-policy, /#case-fomin etc.
-   On arrival, open the matching legal sheet or case study. */
+/* Old WordPress links /privacy-policy and /the-fine-print redirect to /#privacy-policy and /#the-fine-print.
+   On arrival, open the matching legal sheet. */
 addEventListener('load', function () {
   var h = decodeURIComponent(location.hash.slice(1)), el = null;
   if (h === 'privacy-policy' || h === 'the-fine-print') el = document.querySelector('[data-legal="' + h + '"]');
-  else if (h.indexOf('case-') === 0) {
-    var name = h.slice(5).replace(/-/g, ' ');
-    document.querySelectorAll('[data-case]').forEach(function (b) { if (!el && b.textContent.trim().toLowerCase() === name) el = b; });
-    var work = document.getElementById('work'); if (work) work.scrollIntoView();
-  }
   if (el) el.click();
 });
 </script>
@@ -1149,32 +1144,32 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
       <article class="case" data-reveal style="--i:0">
         <p class="fig-head" aria-hidden="true"><span>Case 06.1 · Nancy</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/eedd1af54f.webp" width="790" height="790" alt="Nancy Little Creatures Jack packaging: a purple box with an orange pumpkin, on a purple backdrop" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/5aa0a57c94.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="4" aria-haspopup="dialog">Nancy</button></h3>
+        <h3 class="case-title">Nancy</h3>
       </article>
       <article class="case" data-reveal style="--i:1">
         <p class="fig-head" aria-hidden="true"><span>Case 06.2 · Body Restore</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/6ceaad65fc.webp" width="790" height="790" alt="Body Restore bath tea soaks packaging" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/e20b0074f8.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="0" aria-haspopup="dialog">Body Restore</button></h3>
+        <h3 class="case-title">Body Restore</h3>
       </article>
       <article class="case" data-reveal style="--i:2">
         <p class="fig-head" aria-hidden="true"><span>Case 06.3 · People Finders</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/fa98c2cfed.webp" width="545" height="545" alt="People Finders ad on a phone screen: find out who's really calling before you pick up" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/51de1efe17.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="2" aria-haspopup="dialog">People Finders</button></h3>
+        <h3 class="case-title">People Finders</h3>
       </article>
       <article class="case" data-reveal style="--i:0">
         <p class="fig-head" aria-hidden="true"><span>Case 06.4 · Cloudcore</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/e5f9efd56c.webp" width="790" height="790" alt="Cloudcore Fabrication business card" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/379a0fd65c.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="3" aria-haspopup="dialog">Cloudcore</button></h3>
+        <h3 class="case-title">Cloudcore</h3>
       </article>
       <article class="case" data-reveal style="--i:1">
         <p class="fig-head" aria-hidden="true"><span>Case 06.5 · Pink Palm Puff</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/cf40147c0a.webp" width="790" height="790" alt="Pink Palm Puff blue hoodie on a beach" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/37728c6a0a.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="5" aria-haspopup="dialog">Pink Palm Puff</button></h3>
+        <h3 class="case-title">Pink Palm Puff</h3>
       </article>
       <article class="case" data-reveal style="--i:2">
         <p class="fig-head" aria-hidden="true"><span>Case 06.6 · Fomin</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/4a1b2c4727.webp" width="790" height="790" alt="Fomin travel soap sheets floating in a blue sky" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/ab55c2d27f.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="1" aria-haspopup="dialog">Fomin</button></h3>
+        <h3 class="case-title">Fomin</h3>
       </article>
     </div>
   </div>
