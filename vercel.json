@@ -1,0 +1,101 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/home-2{/}?",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies{/}?",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/:slug*",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy{/}?",
+      "destination": "/#privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/the-fine-print{/}?",
+      "destination": "/#the-fine-print",
+      "permanent": true
+    },
+    {
+      "source": "/creative-subscription-vs-traditional-video-agency{/}?",
+      "destination": "/#compare",
+      "permanent": true
+    },
+    {
+      "source": "/author/:slug*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/category/:slug*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:slug*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/feed{/}?",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/comments/feed{/}?",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-login.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/wp-sitemap-:name.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

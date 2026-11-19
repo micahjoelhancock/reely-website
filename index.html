@@ -6,6 +6,38 @@
 <title>Reely · Your own creative department. Instantly.</title>
 <meta name="description" content="Your own team of specialized designers, video editors and a dedicated Creative Director for one flat monthly price. Pause or cancel anytime.">
 <meta name="theme-color" content="#151515">
+<link rel="canonical" href="https://reely.studio/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reely">
+<meta property="og:url" content="https://reely.studio/">
+<meta property="og:title" content="Reely · Your own creative department. Instantly.">
+<meta property="og:description" content="Your own team of specialized designers, video editors and a dedicated Creative Director for one flat monthly price. Pause or cancel anytime.">
+<meta property="og:image" content="https://reely.studio/social-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Reely: Your own creative department. Instantly.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@reelystudio">
+<meta name="twitter:title" content="Reely · Your own creative department. Instantly.">
+<meta name="twitter:description" content="Your own team of specialized designers, video editors and a dedicated Creative Director for one flat monthly price. Pause or cancel anytime.">
+<meta name="twitter:image" content="https://reely.studio/social-card.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://reely.studio/#org","name":"Reely","legalName":"Reely Ltd.","url":"https://reely.studio/","logo":"https://reely.studio/social-card.jpg","email":"micah@reely.studio","slogan":"Effective creative. On repeat.","description":"A creative subscription studio: specialized designers, video editors and a dedicated Creative Director for one flat monthly price.","sameAs":["https://www.instagram.com/reelystudio","https://x.com/reelystudio","https://www.linkedin.com/company/104150470"]},
+{"@type":"WebSite","@id":"https://reely.studio/#site","url":"https://reely.studio/","name":"Reely","publisher":{"@id":"https://reely.studio/#org"}}
+]}
+</script>
+<script>
+/* Old WordPress links /privacy-policy and /the-fine-print redirect to /#privacy-policy and /#the-fine-print.
+   On arrival, open the matching legal sheet. */
+addEventListener('load', function () {
+  var h = decodeURIComponent(location.hash.slice(1)), el = null;
+  if (h === 'privacy-policy' || h === 'the-fine-print') el = document.querySelector('[data-legal="' + h + '"]');
+  if (el) el.click();
+});
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23151515'/%3E%3Crect x='24' y='24' width='16' height='16' fill='%23E2382B'/%3E%3C/svg%3E">
 <script>!function(){var r=document.documentElement,off=!1,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;try{var v=localStorage.getItem('reely-motion');off=v==='off';if(v==='on')rm=!1}catch(e){}r.className+=' js '+(off||rm?'still':'motion intro');document.addEventListener('DOMContentLoaded',function(){if(!window.reelyReady){r.classList.remove('intro','motion');r.classList.add('still')}})}()</script>
 <style>
@@ -369,6 +401,17 @@ main:focus, section:focus { outline: none; }
 .bill.red .set { color: var(--red-hi); text-shadow: 0 0 12px rgba(240, 74, 60, .5); }
 
 /* ---------- 9. Compare ---------- */
+/* Compare: a faint LED dot field behind the table; dots near the pointer light up red, like the footer wordmark */
+.compare { overflow: hidden; }
+.compare > .wrap { position: relative; z-index: 1; }
+.cmp-bg { position: absolute; inset: 0; pointer-events: none; --dots: radial-gradient(circle, #000 1.9px, transparent 2.5px); }
+.cmp-bg i { position: absolute; inset: 0; }
+.cmp-dots { background: #1f1f1f;
+  -webkit-mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent), var(--dots) 0 0 / 6px 6px; -webkit-mask-composite: source-in;
+  mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent), var(--dots) 0 0 / 6px 6px; mask-composite: intersect; }
+.cmp-lit { background: var(--red-hi); opacity: var(--o, 0); filter: drop-shadow(0 0 4px rgba(240, 74, 60, .5));
+  -webkit-mask: radial-gradient(circle var(--rad, 260px) at var(--x, 50%) var(--y, 50%), #000 0, rgba(0, 0, 0, .7) 35%, transparent 100%), var(--dots) 0 0 / 6px 6px; -webkit-mask-composite: source-in;
+  mask: radial-gradient(circle var(--rad, 260px) at var(--x, 50%) var(--y, 50%), #000 0, rgba(0, 0, 0, .7) 35%, transparent 100%), var(--dots) 0 0 / 6px 6px; mask-composite: intersect; }
 .cmp { margin-top: 56px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; }
 .cmp-row { display: grid; grid-template-columns: minmax(0, 1fr) repeat(5, 128px); }
 .cmp-head { height: 48px; border-bottom: 1px solid var(--rule); font: 500 11px/14px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--parch); }
@@ -903,9 +946,9 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
 <!-- GOLD LED BANNER -->
 <section class="bill" aria-labelledby="bill-t">
   <h2 class="sr-only" id="bill-t">What every plan includes</h2>
-  <p class="sr-only">Unlimited requests. One flat monthly price. 24-48 hour turnaround. Dedicated Creative Director. Dedicated account manager. Pause anytime.</p>
+  <p class="sr-only">One flat monthly price. 24-48 hour turnaround. Dedicated Creative Director. Dedicated account manager. Pause anytime.</p>
   <div class="track" data-marquee="bill" aria-hidden="true">
-    <div class="set"><span>Unlimited requests</span><i></i><span>One flat monthly price</span><i></i><span>24-48 hour turnaround</span><i></i><span>Dedicated Creative Director</span><i></i><span>Dedicated account manager</span><i></i><span>Pause anytime</span><i></i></div>
+    <div class="set"><span>One flat monthly price</span><i></i><span>24-48 hour turnaround</span><i></i><span>Dedicated Creative Director</span><i></i><span>Dedicated account manager</span><i></i><span>Pause anytime</span><i></i></div>
   </div>
   <canvas class="bill-gl" aria-hidden="true"></canvas>
 </section>
@@ -967,10 +1010,11 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
 
 <!-- 04 · COMPARE -->
 <section class="compare sec" id="compare" aria-labelledby="cmp-t" tabindex="-1">
+  <div class="cmp-bg" aria-hidden="true"><i class="cmp-dots"></i><i class="cmp-lit b"></i><i class="cmp-lit a"></i></div>
   <div class="wrap">
     <header class="sec-head center">
       <p class="label" data-decode><span class="idx">04 /</span> <span>Compare</span></p>
-      <h2 class="h1" id="cmp-t"><span class="ln"><span>No risk.</span></span></h2>
+      <h2 class="h1" id="cmp-t"><span class="ln"><span>No risk.</span></span> <span class="ln"><span>No overhead.</span></span></h2>
     </header>
     <div class="cmp" id="cmp">
       <div class="cmp-scroll"><div class="cmp-in" role="table" aria-label="How Reely compares">
@@ -986,7 +1030,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
           <div class="cmp-row r reely" role="row"><div class="who" role="rowheader"><svg role="img" aria-label="Reely" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155 36" fill="none"> <path d="M117.52 0H132.246L136.236 9.35811H136.616C137.218 7.52132 137.614 6.39708 137.804 5.98539L140.369 0H155L142.744 20.3788V35.8173H130.013V20.3788L117.52 0Z" fill="currentColor"></path> <path d="M95.2381 35.8173V0H108.254V24.3216H119.18V35.8173H95.2381Z" fill="currentColor"></path> <path d="M65.4051 35.8173V0H89.4892V9.78564H78.516V13.2059H88.5391V22.5165H78.516V26.0317H89.8692V35.8173H65.4051Z" fill="currentColor"></path> <path d="M35.7621 35.8173V0H59.8461V9.78564H48.8729V13.2059H58.8961V22.5165H48.8729V26.0317H60.2262V35.8173H35.7621Z" fill="currentColor"></path> <path d="M0 35.8173V0H15.7235C20.1255 0 23.704 1.0134 26.4592 3.04019C29.2461 5.06699 30.6395 8.2022 30.6395 12.4458C30.6395 15.0743 30.1011 17.0853 29.0244 18.4787C27.9793 19.8405 26.2059 20.933 23.704 21.7564V22.0414C24.7491 22.8648 25.4775 23.5774 25.8892 24.1791L33.6797 35.8173H18.6687L12.9683 24.3216H12.7308V35.8173H0ZM12.7308 9.78564V15.866H13.6334C14.9635 15.866 16.0085 15.676 16.7686 15.296C17.5286 14.8843 17.9087 14.0767 17.9087 12.8733C17.9087 11.6066 17.5445 10.7832 16.8161 10.4032C16.0877 9.99148 15.0585 9.78564 13.7284 9.78564H12.7308Z" fill="currentColor"></path> </svg><p>Work with the top 1% of global creative talent, recruited from the best brands and agencies.</p></div><span class="mk c1 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c2 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c3 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c4 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c5 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span></div>
           <div class="cmp-row r" role="row"><div class="who" role="rowheader"><b>In-house team</b><p>Hiring in-house is costly, requires management, and lacks the skill and diversity you need.</p></div><span class="mk c1 no" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span><span class="mk c2 no" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span><span class="mk c3 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c4 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c5 no" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span></div>
           <div class="cmp-row r" role="row"><div class="who" role="rowheader"><b>Traditional agencies</b><p>Working with traditional agencies is slow, complex, and expensive.</p></div><span class="mk c1 no" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span><span class="mk c2 no" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span><span class="mk c3 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c4 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c5 no" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span></div>
-          <div class="cmp-row r" role="row"><div class="who" role="rowheader"><b>Freelancers</b><p>They are slow, lack reliability, and limit your ability to scale - often leading to poor quality results.</p></div><span class="mk c1 no" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span><span class="mk c2 no" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span><span class="mk c3 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c4 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c5 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span></div>
+          <div class="cmp-row r" role="row"><div class="who" role="rowheader"><b>Freelancers</b><p>They are slow, lack reliability, and limit your ability to scale, often leading to poor quality results.</p></div><span class="mk c1 no" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span><span class="mk c2 no" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">No</span></span><span class="mk c3 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c4 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span><span class="mk c5 yes" role="cell"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 12.5l5 5 11-11"/></svg><span class="sr-only">Yes</span></span></div>
         </div>
       </div></div>
     </div>
@@ -999,7 +1043,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
     <header class="sec-head center">
       <p class="label" data-decode><span class="idx">05 /</span> <span>Pricing</span></p>
       <h2 class="h1" id="price-t"><span class="ln"><span>A simple</span></span> <span class="ln"><span>solution</span></span></h2>
-      <p class="h3 fade">Choose a plan that fits your needs</p>
+      <p class="h3 fade">Choose a plan that fits your needs. Pause, upgrade, or downgrade anytime.</p>
       <ul class="pills fade">
         <li><i class="sq"></i>Your own creative team</li>
         <li><i class="sq"></i>24 - 48 hr turnaround</li>
@@ -1017,7 +1061,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
         </div>
         <div class="plan-sec">
           <p class="plan-k">How it works</p>
-          <dl class="how"><div><dt class="sr-only">Requests per week</dt><dd><b>1 - 2</b><span aria-hidden="true">Requests per week</span></dd></div></dl>
+          <dl class="how"><div><dt class="sr-only">Projects per week</dt><dd><b>2</b><span aria-hidden="true">Projects per week</span></dd></div></dl>
           <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <div class="plan-sec">
@@ -1040,7 +1084,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
         </div>
         <div class="plan-sec">
           <p class="plan-k">How it works</p>
-          <dl class="how"><div><dt class="sr-only">Requests per week</dt><dd><b>3 - 5</b><span aria-hidden="true">Requests per week</span></dd></div></dl>
+          <dl class="how"><div><dt class="sr-only">Projects per week</dt><dd><b>5</b><span aria-hidden="true">Projects per week</span></dd></div></dl>
           <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <div class="plan-sec">
@@ -1062,7 +1106,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
         </div>
         <div class="plan-sec">
           <p class="plan-k">How it works</p>
-          <dl class="how"><div><dt class="sr-only">Requests per week</dt><dd><b>7 - 10</b><span aria-hidden="true">Requests per week</span></dd></div></dl>
+          <dl class="how"><div><dt class="sr-only">Projects per week</dt><dd><b>10</b><span aria-hidden="true">Projects per week</span></dd></div></dl>
           <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <div class="plan-sec">
@@ -1094,38 +1138,38 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
     <header class="sec-head center">
       <p class="label" data-decode><span class="idx">06 /</span> <span>Case studies</span></p>
       <h2 class="h2" id="work-t"><span class="ln"><span>When you work with Reely, you get</span></span> <span class="ln"><span>more than just designers.</span></span></h2>
-      <p class="lede">You'll get your own dedicated Creative Director and access to our Convert-Ready Creative optimization process. Every project goes through our rapid AI-powered deep dive to ensure it's guaranteed to drive results based on hundreds of thousands of data-points and aware-winning creative strategists.</p>
+      <p class="lede">You'll get your own dedicated Creative Director and access to our Creative Conversion Formula® optimization process. Every project goes through our rapid AI-powered deep dive to ensure it's guaranteed to drive results based on hundreds of thousands of data-points and aware-winning creative strategists.</p>
     </header>
     <div class="cases">
       <article class="case" data-reveal style="--i:0">
         <p class="fig-head" aria-hidden="true"><span>Case 06.1 · Nancy</span><i class="sq"></i></p>
-        <div class="case-img"><img src="assets/img/cc20d2f50e.webp" width="790" height="790" alt="Nancy Little Creatures packaging: a purple box with an orange pumpkin illustration, on a dark backdrop" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/5aa0a57c94.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="4" aria-haspopup="dialog">Nancy</button></h3>
+        <div class="case-img"><img src="assets/img/eedd1af54f.webp" width="790" height="790" alt="Nancy Little Creatures Jack packaging: a purple box with an orange pumpkin, on a purple backdrop" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/5aa0a57c94.webp" width="790" height="790" alt="" decoding="async"></div>
+        <h3 class="case-title">Nancy</h3>
       </article>
       <article class="case" data-reveal style="--i:1">
         <p class="fig-head" aria-hidden="true"><span>Case 06.2 · Body Restore</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/6ceaad65fc.webp" width="790" height="790" alt="Body Restore bath tea soaks packaging" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/e20b0074f8.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="0" aria-haspopup="dialog">Body Restore</button></h3>
+        <h3 class="case-title">Body Restore</h3>
       </article>
       <article class="case" data-reveal style="--i:2">
         <p class="fig-head" aria-hidden="true"><span>Case 06.3 · People Finders</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/fa98c2cfed.webp" width="545" height="545" alt="People Finders ad on a phone screen: find out who's really calling before you pick up" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/51de1efe17.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="2" aria-haspopup="dialog">People Finders</button></h3>
+        <h3 class="case-title">People Finders</h3>
       </article>
       <article class="case" data-reveal style="--i:0">
         <p class="fig-head" aria-hidden="true"><span>Case 06.4 · Cloudcore</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/e5f9efd56c.webp" width="790" height="790" alt="Cloudcore Fabrication business card" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/379a0fd65c.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="3" aria-haspopup="dialog">Cloudcore</button></h3>
+        <h3 class="case-title">Cloudcore</h3>
       </article>
       <article class="case" data-reveal style="--i:1">
         <p class="fig-head" aria-hidden="true"><span>Case 06.5 · Pink Palm Puff</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/cf40147c0a.webp" width="790" height="790" alt="Pink Palm Puff blue hoodie on a beach" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/37728c6a0a.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="5" aria-haspopup="dialog">Pink Palm Puff</button></h3>
+        <h3 class="case-title">Pink Palm Puff</h3>
       </article>
       <article class="case" data-reveal style="--i:2">
         <p class="fig-head" aria-hidden="true"><span>Case 06.6 · Fomin</span><i class="sq"></i></p>
         <div class="case-img"><img src="assets/img/4a1b2c4727.webp" width="790" height="790" alt="Fomin travel soap sheets floating in a blue sky" loading="lazy" decoding="async"><img class="alt" data-src="assets/img/ab55c2d27f.webp" width="790" height="790" alt="" decoding="async"></div>
-        <h3 class="case-title"><button type="button" data-case="1" aria-haspopup="dialog">Fomin</button></h3>
+        <h3 class="case-title">Fomin</h3>
       </article>
     </div>
   </div>
@@ -1154,7 +1198,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
       <div class="faq-col">
         <details><summary><span class="qt" aria-hidden="true">05</span><span class="q">What if I don’t like the first draft?</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>Most revisions land the same day or early the next. We’re your ongoing partner, so there’s no limit on drafts.</p></div></details>
         <details><summary><span class="qt" aria-hidden="true">06</span><span class="q">How do we communicate?</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>You get a Creative Director for day-to-day contact, a shared Slack channel, and a dashboard to submit requests, track status and download files.</p></div></details>
-        <details><summary><span class="qt" aria-hidden="true">07</span><span class="q">Can I do a single project or custom package?</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>The monthly membership is the best value by far: pause or cancel when you have what you need. In rare cases we quote a project rate.</p></div></details>
+        <details><summary><span class="qt" aria-hidden="true">07</span><span class="q">Can I do a single project or custom package?</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>The monthly membership is the best value by far, where you can simply pause or cancel once you’re done. In some cases, we can quote on a project basis.</p></div></details>
         <details><summary><span class="qt" aria-hidden="true">08</span><span class="q">What if I want to cancel?</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>Membership is month-to-month with no long-term commitment. Cancel anytime.</p></div></details>
       </div>
     </div>
@@ -1176,7 +1220,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
         </div>
         <p class="end-body fade">Schedule a short chat with our Director to see if Reely is a good fit your company.</p>
         <div class="end-rule fade" aria-hidden="true"></div>
-        <p class="end-note fade">We’re the kick-ass creative team you always wished you had in-house. Ads, video, web, brand and 3D with one point of contact and no management hassle. Reely is the creative team you don’t have to hire, ready the moment you need us.</p>
+        <p class="end-note fade">We’re the kick-ass creative team you always wished you had. Now you do. Ads, video, web, brand and 3D with one point of contact and no management hassle. Reely is the creative team you don’t have to hire, ready the moment you need us.</p>
         <p class="end-cta fade"><a class="cta" data-magnet href="mailto:micah@reely.studio">Email Our Director <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
         <!-- Newsletter sign-up: built to the design, switched off until there is somewhere to send sign-ups. Remove "hidden" and give the form an action to turn it on. -->
         <div class="snip fade" hidden>
@@ -1769,7 +1813,7 @@ void main(){
   /* Case studies (the first four carry over from the live site) */
   const caseImgs = (...k) => k.map(src => ({ src, w: 790, h: 790 }));
   CASES.push(
-    { name: 'Nancy', gallery: caseImgs('assets/img/cc20d2f50e.webp', 'assets/img/5aa0a57c94.webp') },
+    { name: 'Nancy', gallery: caseImgs('assets/img/eedd1af54f.webp', 'assets/img/5aa0a57c94.webp') },
     { name: 'Pink Palm Puff', gallery: caseImgs('assets/img/cf40147c0a.webp', 'assets/img/37728c6a0a.webp') }
   );
   const scr = $('#screening');
@@ -2127,6 +2171,33 @@ void main(){
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { start(); io.disconnect(); } }, { rootMargin: '150% 0px' });
     io.observe(book);
     document.addEventListener('click', e => { if (e.target.closest('a[href="#book"]')) start(); });
+  })();
+
+  /* ---------- Compare: dots of the background field near the pointer light up red, with a short trail ---------- */
+  (() => {
+    const sec = $('#compare'), A = $('.cmp-lit.a', sec), B = $('.cmp-lit.b', sec);
+    if (!A) return;
+    watch(sec);
+    const a = { x: 0, y: 0 }, b = { x: 0, y: 0 }, t = { x: 0, y: 0 };
+    let o = 0, inside = false;
+    sec.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      const r = sec.getBoundingClientRect();
+      t.x = e.clientX - r.left; t.y = e.clientY - r.top;
+      if (!inside) { a.x = b.x = t.x; a.y = b.y = t.y; }
+      inside = true;
+    });
+    sec.addEventListener('pointerleave', () => { inside = false; });
+    tasks.add(() => {
+      if (!isNear(sec)) return;
+      o = lerp(o, inside ? 1 : 0, inside ? .16 : .06);
+      a.x = lerp(a.x, t.x, .3); a.y = lerp(a.y, t.y, .3);
+      b.x = lerp(b.x, a.x, .07); b.y = lerp(b.y, a.y, .07);
+      const oo = o < .004 ? 0 : o;
+      A.style.setProperty('--x', a.x.toFixed(1) + 'px'); A.style.setProperty('--y', a.y.toFixed(1) + 'px'); A.style.setProperty('--o', (oo * .6).toFixed(3));
+      B.style.setProperty('--x', b.x.toFixed(1) + 'px'); B.style.setProperty('--y', b.y.toFixed(1) + 'px'); B.style.setProperty('--o', (oo * .3).toFixed(3)); B.style.setProperty('--rad', '210px');
+    });
+    onMotion.push(on => { if (!on) [A, B].forEach(el => ['--x', '--y', '--o', '--rad'].forEach(k => el.style.removeProperty(k))); });
   })();
 
   /* ---------- Footer: LEDs near the pointer light up red, with a short trail; a sweep runs once on arrival ---------- */
