@@ -406,6 +406,17 @@ main:focus, section:focus { outline: none; }
 .bill.red .set { color: var(--red-hi); text-shadow: 0 0 12px rgba(240, 74, 60, .5); }
 
 /* ---------- 9. Compare ---------- */
+/* Compare: a faint LED dot field behind the table; dots near the pointer light up red, like the footer wordmark */
+.compare { overflow: hidden; }
+.compare > .wrap { position: relative; z-index: 1; }
+.cmp-bg { position: absolute; inset: 0; pointer-events: none; --dots: radial-gradient(circle, #000 1.9px, transparent 2.5px); }
+.cmp-bg i { position: absolute; inset: 0; }
+.cmp-dots { background: #1f1f1f;
+  -webkit-mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent), var(--dots) 0 0 / 6px 6px; -webkit-mask-composite: source-in;
+  mask: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent), var(--dots) 0 0 / 6px 6px; mask-composite: intersect; }
+.cmp-lit { background: var(--red-hi); opacity: var(--o, 0); filter: drop-shadow(0 0 4px rgba(240, 74, 60, .5));
+  -webkit-mask: radial-gradient(circle var(--rad, 260px) at var(--x, 50%) var(--y, 50%), #000 0, rgba(0, 0, 0, .7) 35%, transparent 100%), var(--dots) 0 0 / 6px 6px; -webkit-mask-composite: source-in;
+  mask: radial-gradient(circle var(--rad, 260px) at var(--x, 50%) var(--y, 50%), #000 0, rgba(0, 0, 0, .7) 35%, transparent 100%), var(--dots) 0 0 / 6px 6px; mask-composite: intersect; }
 .cmp { margin-top: 56px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; }
 .cmp-row { display: grid; grid-template-columns: minmax(0, 1fr) repeat(5, 128px); }
 .cmp-head { height: 48px; border-bottom: 1px solid var(--rule); font: 500 11px/14px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--parch); }
@@ -1004,6 +1015,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
 
 <!-- 04 · COMPARE -->
 <section class="compare sec" id="compare" aria-labelledby="cmp-t" tabindex="-1">
+  <div class="cmp-bg" aria-hidden="true"><i class="cmp-dots"></i><i class="cmp-lit b"></i><i class="cmp-lit a"></i></div>
   <div class="wrap">
     <header class="sec-head center">
       <p class="label" data-decode><span class="idx">04 /</span> <span>Compare</span></p>
@@ -2164,6 +2176,33 @@ void main(){
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { start(); io.disconnect(); } }, { rootMargin: '150% 0px' });
     io.observe(book);
     document.addEventListener('click', e => { if (e.target.closest('a[href="#book"]')) start(); });
+  })();
+
+  /* ---------- Compare: dots of the background field near the pointer light up red, with a short trail ---------- */
+  (() => {
+    const sec = $('#compare'), A = $('.cmp-lit.a', sec), B = $('.cmp-lit.b', sec);
+    if (!A) return;
+    watch(sec);
+    const a = { x: 0, y: 0 }, b = { x: 0, y: 0 }, t = { x: 0, y: 0 };
+    let o = 0, inside = false;
+    sec.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      const r = sec.getBoundingClientRect();
+      t.x = e.clientX - r.left; t.y = e.clientY - r.top;
+      if (!inside) { a.x = b.x = t.x; a.y = b.y = t.y; }
+      inside = true;
+    });
+    sec.addEventListener('pointerleave', () => { inside = false; });
+    tasks.add(() => {
+      if (!isNear(sec)) return;
+      o = lerp(o, inside ? 1 : 0, inside ? .16 : .06);
+      a.x = lerp(a.x, t.x, .3); a.y = lerp(a.y, t.y, .3);
+      b.x = lerp(b.x, a.x, .07); b.y = lerp(b.y, a.y, .07);
+      const oo = o < .004 ? 0 : o;
+      A.style.setProperty('--x', a.x.toFixed(1) + 'px'); A.style.setProperty('--y', a.y.toFixed(1) + 'px'); A.style.setProperty('--o', (oo * .6).toFixed(3));
+      B.style.setProperty('--x', b.x.toFixed(1) + 'px'); B.style.setProperty('--y', b.y.toFixed(1) + 'px'); B.style.setProperty('--o', (oo * .3).toFixed(3)); B.style.setProperty('--rad', '210px');
+    });
+    onMotion.push(on => { if (!on) [A, B].forEach(el => ['--x', '--y', '--o', '--rad'].forEach(k => el.style.removeProperty(k))); });
   })();
 
   /* ---------- Footer: LEDs near the pointer light up red, with a short trail; a sweep runs once on arrival ---------- */
