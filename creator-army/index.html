@@ -3864,6 +3864,23 @@ main.dj > section.s-contact { background: #151515; }
 .js .rl.is-live.is-touched .rl-hint { opacity: 1; }
 @media (max-width: 560px) { .js .rl.is-live .rl-hint { display: block; } }
 
+/* ---------- One army, not five hires: inverted. The comparison is black, the Reely card is light ---------- */
+.rx-hire-card { background: #151515; border-color: rgba(244, 241, 234, .14); }
+.rx-hire-card .rx-h2 { color: #f4f1ea; }
+.rx-hire-card .rx-hire-sub, .rx-hire-card .rx-hire-total-d { color: rgba(242, 232, 216, .7); }
+.rx-hire-card .rx-hire-main .rx-k { color: rgba(242, 232, 216, .6); }
+.rx-hire-tile { background: #1f1f1f; border-color: rgba(244, 241, 234, .14); color: #f4f1ea; }
+.rx-hire-tile .rx-hire-job { color: rgba(242, 232, 216, .7); }
+.rx-hire-cost small { color: rgba(242, 232, 216, .6); }
+.rx-hire-cost .rx-when-off { display: inline-flex; align-items: flex-end; white-space: nowrap; }
+.rx-hire-total { border-color: rgba(244, 241, 234, .14); }
+.rx-hire-total-l b { color: #f4f1ea; }
+.rx-reely { background: var(--rx-cream); color: var(--rx-ink); box-shadow: 0 12px 28px rgba(0, 0, 0, .45); }
+.rx-reely .rx-k.is-butter { color: var(--rx-red); }
+.rx-reely-price .rx-k { color: var(--rx-soft); }
+.rx-reely-list li.is-lit { color: #000; }
+.rx-reely .rx-led.is-light { background: #f3ede2; }
+
 /* =====================================================================
    Shared with the home page: menu bar, buttons, grain, LED wordmark and footer.
    Ported from /index.html so both pages look and behave the same.
@@ -4133,7 +4150,7 @@ footer.site-foot { display: grid; grid-template-columns: auto minmax(0, 1fr) aut
   </div>
   <section id="why" class="rx-hire" aria-labelledby="rx-hire-title">
     <div class="wrap">
-      <div class="rx-hire-card" data-rx-hire>
+      <div class="rx-hire-card rx-dark" data-rx-hire>
         <div class="rx-hire-main">
           <h2 class="rx-h2" id="rx-hire-title" data-rv>One army,<br>not five hires.</h2>
           <p class="rx-hire-sub" data-rv>Running creators in-house takes five hires.</p>
@@ -4148,13 +4165,13 @@ footer.site-foot { display: grid; grid-template-columns: auto minmax(0, 1fr) aut
           <div class="rx-hire-total" data-rv>
             <p class="rx-hire-total-l"><span class="rx-k">In-house</span><b>Five salaries</b></p>
             <p class="rx-hire-total-d">About $100,000 a year per role.</p>
-            <p class="rx-hire-total-n" data-number-flow-stat><span class="rx-k">About</span><span class="rx-led is-light"><number-flow class="nf-number" data-stat-number data-from="100000" data-to="500000" data-format='{"style":"currency","currency":"USD","notation":"compact","maximumFractionDigits":0}'>$500K</number-flow></span><span class="rx-k">/YR</span></p>
+            <p class="rx-hire-total-n" data-number-flow-stat><span class="rx-k">About</span><span class="rx-led"><number-flow class="nf-number" data-stat-number data-from="100000" data-to="500000" data-format='{"style":"currency","currency":"USD","notation":"compact","maximumFractionDigits":0}'>$500K</number-flow></span><span class="rx-k">/YR</span></p>
           </div>
         </div>
-        <aside class="rx-reely rx-dark" data-rv aria-label="Reely: one fee">
+        <aside class="rx-reely" data-rv aria-label="Reely: one fee">
           <p class="rx-k is-butter">Reely</p>
           <p class="rx-reely-t">One fee</p>
-          <p class="rx-reely-price" data-number-flow-stat><span class="rx-led"><number-flow class="nf-number" data-stat-number data-from="1000" data-to="3000" data-format='{"style":"currency","currency":"USD","maximumFractionDigits":0}'>$3,000</number-flow></span><span class="rx-k">From<br>/MO</span></p>
+          <p class="rx-reely-price" data-number-flow-stat><span class="rx-led is-light"><number-flow class="nf-number" data-stat-number data-from="1000" data-to="3000" data-format='{"style":"currency","currency":"USD","maximumFractionDigits":0}'>$3,000</number-flow></span><span class="rx-k">From<br>/MO</span></p>
           <ul class="rx-reely-list">
             <li><i class="rx-tick" aria-hidden="true"></i>Find, vet and manage creators</li>
             <li><i class="rx-tick" aria-hidden="true"></i>Creative strategy, hooks and briefs</li>
