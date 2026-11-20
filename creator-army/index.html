@@ -3889,6 +3889,11 @@ main.dj > section.s-contact { background: #151515; }
 .rx-boost .btn.rx-cta::before { background: var(--rx-cream); }
 .rx-boost .btn.rx-cta:hover, .rx-boost .btn.rx-cta:focus-visible { color: var(--rx-ink); }
 
+/* Our work band as its own section, right after the five hires */
+.ar.rx-work { padding-top: 0 !important; padding-bottom: 0 !important; }
+.rx-work .rx-band { margin-top: 0; }
+.ar:not(.rx-work) { padding-bottom: var(--dj-gap) !important; }
+
 /* =====================================================================
    Shared with the home page: menu bar, buttons, grain, LED wordmark and footer.
    Ported from /index.html so both pages look and behave the same.
@@ -4192,6 +4197,29 @@ footer.site-foot { display: grid; grid-template-columns: auto minmax(0, 1fr) aut
       </div>
     </div>
   </section>
+<section id="work" class="ar rx-work" aria-label="Our work">
+  <div class="wrap">
+    <div class="rx-band rx-dark">
+    <div class="ar-reel" data-dj-rail-scope>
+      <div class="ar-reel-head">
+        <h3 class="ar-sub">Our work is engineered for conversion</h3>
+        <div class="dj-rail-nav">
+          <button type="button" class="dj-arrow" data-dj-prev aria-label="Previous videos"><span aria-hidden="true">←</span></button>
+          <button type="button" class="dj-arrow" data-dj-next aria-label="Next videos"><span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+      <ul class="dj-rail ar-rail" data-dj-rail tabindex="0" aria-label="Posts and ads Reely made for brands"><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-hardjewelry" muted loop playsinline preload="none" poster="/assets/img/eeafdc80cd.webp" aria-label="A couple in a car for a Hard Jewelry Meta ad" tabindex="-1"></video></div><figcaption><b>Hard Jewelry</b><span>Meta ad</span></figcaption></figure></li><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-blackout" muted loop playsinline preload="none" poster="/assets/img/9c122276ee.webp" aria-label="A flag behind the words now yours for the 4th, a BlackOut Coffee video ad" tabindex="-1"></video></div><figcaption><b>BlackOut Coffee</b><span>Video ad</span></figcaption></figure></li><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-wingback" muted loop playsinline preload="none" poster="/assets/img/7636e37a82.webp" aria-label="A slim Wingback leather wallet in hand" tabindex="-1"></video></div><figcaption><b>Wingback</b><span>Product film</span></figcaption></figure></li><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-vetlink" muted loop playsinline preload="none" poster="/assets/img/7e7c2a3002.webp" aria-label="A vet reading a tablet, a GlobalVetLink video ad" tabindex="-1"></video></div><figcaption><b>GlobalVetLink</b><span>Video ad</span></figcaption></figure></li><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-crossroads" muted loop playsinline preload="none" poster="/assets/img/bf7535b767.webp" aria-label="A phone showing unused coverage, a Crossroads Meta ad" tabindex="-1"></video></div><figcaption><b>Crossroads</b><span>Meta ad</span></figcaption></figure></li><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-hjmotion" muted loop playsinline preload="none" poster="/assets/img/a7c8ce4012.webp" aria-label="A ring over the words our biggest drop ever, Hard Jewelry motion graphics" tabindex="-1"></video></div><figcaption><b>Hard Jewelry</b><span>Motion graphics</span></figcaption></figure></li></ul>
+    </div>
+    <div class="ar-grid is-solo">
+      <div class="ar-readout">
+        <p class="ar-osd" aria-hidden="true"><span><b class="rx-sq"></b>AVG</span><span>ALL BRANDS</span></p>
+        <h3 class="ar-readout-k">Average results for brands working with Reely</h3>
+        <dl class="ar-rows"><div class="ar-row" data-number-flow-stat><dt>Average views per creator video</dt><dd><number-flow class="nf-number" data-stat-number data-from="1000" data-to="9500">9,500</number-flow></dd></div><div class="ar-row" data-number-flow-stat><dt>Average views on our top five creator videos</dt><dd><number-flow class="nf-number" data-stat-number data-from="1.0" data-to="3.0" data-format='{"minimumFractionDigits":1,"maximumFractionDigits":1}' data-suffix="M">3.0M</number-flow></dd></div><div class="ar-row" data-number-flow-stat><dt>Increase in retail placements<small>Fomin, for one, was placed in Costco and Walmart.</small></dt><dd><number-flow class="nf-number" data-stat-number data-from="1" data-to="2" data-suffix="x">2x</number-flow></dd></div></dl>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
 <section id="pricing" class="ap ap12" aria-labelledby="ap-title">
   <div class="wrap">
     <h2 class="dj-h2 is-center" id="ap-title"><span class="dj-line">ONE FEE, YOUR WHOLE</span> <span class="dj-line is-red">CONTENT GAME HANDLED.</span></h2>
@@ -4304,7 +4332,7 @@ footer.site-foot { display: grid; grid-template-columns: auto minmax(0, 1fr) aut
 <section id="results" class="ar" aria-labelledby="ar-title">
   <div class="wrap">
     <h2 class="dj-h2 is-center" id="ar-title"><span class="dj-line">REAL POSTS.</span><span class="dj-line is-red">REAL RESULTS.</span></h2>
-    <p class="dj-lead is-center">Three clients, the work we made for them and what they said about it. Then what brands working with Reely see, on average.</p>
+    <p class="dj-lead is-center">Three clients, the work we made for them and what they said about it.</p>
     <div class="ar-cases"><article class="ar-case is-lead" aria-label="Koi, a client">
         <div class="ar-case-media"><div class="ar-case-screen"><video data-media="w-koi" muted loop playsinline preload="none" poster="/assets/img/0c373e8b93.webp" aria-label="A creator in an orange jacket talking to camera, a UGC ad Reely made for Koi" tabindex="-1"></video><span class="ah-osd" aria-hidden="true">UGC AD · KOI</span></div></div>
         <div class="ar-case-body">
@@ -4330,25 +4358,6 @@ footer.site-foot { display: grid; grid-template-columns: auto minmax(0, 1fr) aut
           <ul class="ar-thumbs"><li><figure><img src="/assets/img/95bf89cc61.webp" alt="Fomin whole body deodorant" loading="lazy" decoding="async" style="object-position:center"><figcaption>Deodorant</figcaption></figure></li><li><figure><img src="/assets/img/1611bf84fb.webp" alt="Fomin travel soap sheet tins" loading="lazy" decoding="async" style="object-position:center"><figcaption>Soap sheets</figcaption></figure></li><li><figure><img src="/assets/img/42a5483c98.webp" alt="The cover of the Fomin and Costco Wholesale pitch deck" loading="lazy" decoding="async" style="object-position:center"><figcaption>Retail deck</figcaption></figure></li></ul>
         </div>
       </article></div>
-    <div class="rx-band rx-dark">
-    <div class="ar-reel" data-dj-rail-scope>
-      <div class="ar-reel-head">
-        <h3 class="ar-sub">Our work is engineered for conversion</h3>
-        <div class="dj-rail-nav">
-          <button type="button" class="dj-arrow" data-dj-prev aria-label="Previous videos"><span aria-hidden="true">←</span></button>
-          <button type="button" class="dj-arrow" data-dj-next aria-label="Next videos"><span aria-hidden="true">→</span></button>
-        </div>
-      </div>
-      <ul class="dj-rail ar-rail" data-dj-rail tabindex="0" aria-label="Posts and ads Reely made for brands"><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-hardjewelry" muted loop playsinline preload="none" poster="/assets/img/eeafdc80cd.webp" aria-label="A couple in a car for a Hard Jewelry Meta ad" tabindex="-1"></video></div><figcaption><b>Hard Jewelry</b><span>Meta ad</span></figcaption></figure></li><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-blackout" muted loop playsinline preload="none" poster="/assets/img/9c122276ee.webp" aria-label="A flag behind the words now yours for the 4th, a BlackOut Coffee video ad" tabindex="-1"></video></div><figcaption><b>BlackOut Coffee</b><span>Video ad</span></figcaption></figure></li><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-wingback" muted loop playsinline preload="none" poster="/assets/img/7636e37a82.webp" aria-label="A slim Wingback leather wallet in hand" tabindex="-1"></video></div><figcaption><b>Wingback</b><span>Product film</span></figcaption></figure></li><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-vetlink" muted loop playsinline preload="none" poster="/assets/img/7e7c2a3002.webp" aria-label="A vet reading a tablet, a GlobalVetLink video ad" tabindex="-1"></video></div><figcaption><b>GlobalVetLink</b><span>Video ad</span></figcaption></figure></li><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-crossroads" muted loop playsinline preload="none" poster="/assets/img/bf7535b767.webp" aria-label="A phone showing unused coverage, a Crossroads Meta ad" tabindex="-1"></video></div><figcaption><b>Crossroads</b><span>Meta ad</span></figcaption></figure></li><li class="ar-tile"><figure class="ar-tv"><div class="hw-screen"><video data-media="w-hjmotion" muted loop playsinline preload="none" poster="/assets/img/a7c8ce4012.webp" aria-label="A ring over the words our biggest drop ever, Hard Jewelry motion graphics" tabindex="-1"></video></div><figcaption><b>Hard Jewelry</b><span>Motion graphics</span></figcaption></figure></li></ul>
-    </div>
-    <div class="ar-grid is-solo">
-      <div class="ar-readout">
-        <p class="ar-osd" aria-hidden="true"><span><b class="rx-sq"></b>AVG</span><span>ALL BRANDS</span></p>
-        <h3 class="ar-readout-k">Average results for brands working with Reely</h3>
-        <dl class="ar-rows"><div class="ar-row" data-number-flow-stat><dt>Average views per creator video</dt><dd><number-flow class="nf-number" data-stat-number data-from="1000" data-to="9500">9,500</number-flow></dd></div><div class="ar-row" data-number-flow-stat><dt>Average views on our top five creator videos</dt><dd><number-flow class="nf-number" data-stat-number data-from="1.0" data-to="3.0" data-format='{"minimumFractionDigits":1,"maximumFractionDigits":1}' data-suffix="M">3.0M</number-flow></dd></div><div class="ar-row" data-number-flow-stat><dt>Increase in retail placements<small>Fomin, for one, was placed in Costco and Walmart.</small></dt><dd><number-flow class="nf-number" data-stat-number data-from="1" data-to="2" data-suffix="x">2x</number-flow></dd></div></dl>
-      </div>
-    </div>
-    </div>
   </div>
 </section>
 
