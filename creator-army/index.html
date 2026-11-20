@@ -3860,6 +3860,10 @@ main.dj > section.s-contact { background: #151515; }
 .btn-red.rx-cta:hover { background: var(--rx-red); }
 .btn-ghost.rx-cta { background: transparent; }
 
+/* the drag pill stays visible: after a drag, and on phones too */
+.js .rl.is-live.is-touched .rl-hint { opacity: 1; }
+@media (max-width: 560px) { .js .rl.is-live .rl-hint { display: block; } }
+
 /* =====================================================================
    Shared with the home page: menu bar, buttons, grain, LED wordmark and footer.
    Ported from /index.html so both pages look and behave the same.
