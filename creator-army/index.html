@@ -3881,6 +3881,14 @@ main.dj > section.s-contact { background: #151515; }
 .rx-reely-list li.is-lit { color: #000; }
 .rx-reely .rx-led.is-light { background: #f3ede2; }
 
+/* ---------- Boost card: orange, with a dark button so it reads on the orange ---------- */
+.rx-boost { background: var(--rx-orange); border-color: var(--rx-orange); color: var(--rx-ink); }
+.rx-boost .rx-k { color: var(--rx-ink); opacity: .75; }
+.rx-boost p:last-child { color: rgba(27, 23, 20, .82); }
+.rx-boost .btn-red.rx-cta { background: var(--rx-ink); color: var(--rx-cream); box-shadow: 0 6px 16px rgba(27, 23, 20, .3); }
+.rx-boost .btn.rx-cta::before { background: var(--rx-cream); }
+.rx-boost .btn.rx-cta:hover, .rx-boost .btn.rx-cta:focus-visible { color: var(--rx-ink); }
+
 /* =====================================================================
    Shared with the home page: menu bar, buttons, grain, LED wordmark and footer.
    Ported from /index.html so both pages look and behave the same.
