@@ -484,6 +484,88 @@ main:focus, section:focus { outline: none; }
 .plan-cta { margin: auto 23px 23px; min-height: 48px; }
 .plan-cta.cta-line { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1px var(--hair); }
 .plan-cta.cta-glow { box-shadow: 0 0 14px rgba(226, 56, 43, .55); }
+.plan .plan-sec:nth-last-child(2) { border-bottom: 0; }
+.plans-all { display: flex; align-items: center; gap: 12px 40px; flex-wrap: wrap; margin-top: 9px; padding: 22px 23px; background: #fff; border: 1px solid var(--hair); border-radius: 6px; box-shadow: 0 8px 12px rgba(20, 20, 20, .06); }
+.plans-all .plan-k span { color: var(--ink-2); }
+.plans-all .plan-list { display: flex; flex-wrap: wrap; gap: 0 32px; margin: 0 0 0 auto; }
+.req { margin-top: 88px; }
+.req-label { display: flex; align-items: center; gap: 16px; font: 500 11px/14px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: #cf2e22; }
+.req-label::after { content: ""; flex: 1; height: 1px; background: var(--hair); }
+.req-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 48px; margin-top: 40px; }
+.req-title { font: 500 clamp(30px, 3.34vw, 48px)/1.1667 var(--f-body); letter-spacing: -.02em; color: var(--ink); }
+.req-lede { max-width: 420px; font: 400 16px/25.6px var(--f-body); color: var(--ink-2); }
+.req-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin-top: 40px; }
+.req-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--hair); border-radius: 6px; box-shadow: 0 8px 12px rgba(20, 20, 20, .06); overflow: hidden; }
+.req-top { display: flex; justify-content: space-between; gap: 8px; padding: 9px 13px; font: 500 11px/14px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.req-top span:last-child { color: #cf2e22; }
+.req-vis { display: flex; align-items: center; justify-content: center; gap: 8px; height: 132px; background: var(--ivory); border-block: 1px solid var(--hair); }
+.req-vis i { display: block; font-style: normal; }
+.req-vis .req-vid { display: grid; place-items: center; width: 52px; height: 92px; border: 1px dashed rgba(20, 20, 20, .35); border-radius: 5px; background: #fff; color: rgba(20, 20, 20, .35); }
+.req-vid.on { border: 0; background: var(--ink); color: var(--red); }
+.req-grid { display: grid; grid-template-columns: repeat(8, 22px); gap: 5px; }
+.req-grid i { height: 22px; border: 1px dashed rgba(20, 20, 20, .35); border-radius: 2px; background: #fff; }
+.req-grid i.on { border: 0; background: var(--red); }
+.req-wire { display: flex !important; flex-direction: column; gap: 4px; width: 58px; height: 96px; padding: 6px; background: #fff; border: 1px solid rgba(20, 20, 20, .35); border-radius: 3px; overflow: hidden; }
+.req-wire > * { display: block; flex: none; border-radius: 1px; text-decoration: none; }
+.req-wire b { width: 40%; height: 4px; background: var(--red); }
+.req-wire u { height: 32px; background: #d2c4b2; }
+.req-wire s { height: 3px; background: rgba(20, 20, 20, .3); }
+.req-wire s + s { width: 80%; }
+.req-wire em { width: 50%; height: 7px; border-radius: 2px; background: var(--ink); }
+.req-wire.page { width: 150px; height: 112px; }
+.req-wire.page b { width: 30%; }
+.req-wire.page u { height: 30px; }
+.req-wire.page > s { width: 70%; }
+.req-wire.page > span + s { width: 100%; }
+.req-wire.page > s + s { width: 60%; }
+.req-wire.page span { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.req-wire.page span u { height: 16px; }
+.req-wire.page em { width: 100%; height: 18px; }
+.req-body { padding: 20px 23px 24px; }
+.req-n { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 10px; }
+.req-n b { font: 500 30px/34px var(--f-body); letter-spacing: -.01em; color: var(--ink); white-space: nowrap; }
+.req-n span { font: 500 11px/14px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.req-d { margin-top: 4px; font: 400 14px/21px var(--f-body); color: var(--ink-2); }
+.req-foot { margin-top: 40px; text-align: center; font: 500 11px/14px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+@media (max-width: 1100px) { .req-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 960px) {
+  .req { margin-top: 64px; }
+  .req-head { flex-direction: column; align-items: flex-start; margin-top: 28px; }
+  .req-cards, .req-foot { margin-top: 28px; }
+}
+@media (max-width: 560px) {
+  .req-cards { gap: 8px; }
+  .req-vis { height: 104px; gap: 5px; }
+  .req-vid { width: 34px; height: 60px; }
+  .req-vid svg { width: 12px; height: 12px; }
+  .req-grid { grid-template-columns: repeat(6, 16px); gap: 4px; }
+  .req-grid i { height: 16px; }
+  .req-wire { width: 36px; height: 68px; padding: 4px; gap: 3px; }
+  .req-wire u { height: 20px; }
+  .req-wire.page { width: 100px; height: 84px; }
+  .req-wire.page u { height: 20px; }
+  .req-wire.page span u { height: 10px; }
+  .req-wire.page em { height: 10px; }
+  .req-top { padding: 8px 10px; font-size: 10px; }
+  .req-top span:last-child { display: none; }
+  .req-body { padding: 14px 12px 16px; }
+  .req-n b { font-size: 24px; line-height: 28px; }
+  .req-n span { font-size: 10px; }
+  .req-d { font-size: 13px; line-height: 19px; }
+}
+.army-x { display: flex; align-items: center; justify-content: space-between; gap: 24px 48px; margin-top: 40px; padding: 30px 32px; background: #ee8a2a; color: var(--ink); border-radius: 6px; }
+.army-x .plan-k { color: var(--ink); }
+.army-x h3 { margin-top: 10px; font: 600 24px/30px var(--f-body); letter-spacing: -.01em; }
+.army-x-copy > p:last-child { margin-top: 6px; font: 400 16px/24px var(--f-body); opacity: .8; }
+.army-x-cta { flex: none; min-width: 200px; min-height: 48px; background: var(--ink); color: var(--ivory); }
+.army-x-cta:hover, .army-x-cta:focus-visible { color: var(--ink); }
+@media (max-width: 960px) {
+  .plans-all, .army-x { max-width: 520px; margin-inline: auto; }
+  .plans-all { flex-direction: column; align-items: flex-start; margin-top: 16px; }
+  .plans-all .plan-list { flex-direction: column; margin: 0; }
+  .army-x { flex-direction: column; align-items: flex-start; margin-top: 32px; padding: 26px 23px; }
+  .army-x-cta { width: 100%; }
+}
 
 /* ---------- 11. Case studies ---------- */
 .cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 9px; margin-top: 64px; }
@@ -1068,10 +1150,6 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
           <p class="plan-k">What you get</p>
           <ul class="plan-list"><li>Ads &amp; social media</li><li>Video editing</li><li>Web &amp; email design</li><li>Presentation design</li><li>Custom illustration</li></ul>
         </div>
-        <div class="plan-sec last">
-          <p class="plan-k">Collaboration</p>
-          <ul class="plan-list"><li>Dedicated Creative Director</li><li>Custom dashboard</li><li>Live Slack channel</li><li>Source files included</li></ul>
-        </div>
         <a class="cta cta-line plan-cta" href="#book">I’m interested<span class="sr-only"> in Sidekick</span></a>
       </li>
       <li class="plan pop" data-level="5" data-speed="1.1">
@@ -1091,10 +1169,6 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
           <p class="plan-k">Everything in essentials, plus</p>
           <ul class="plan-list"><li>Animation / Motion Graphics</li><li>AI video content</li><li>Higher volume</li></ul>
         </div>
-        <div class="plan-sec last">
-          <p class="plan-k">Collaboration</p>
-          <ul class="plan-list"><li>Dedicated Creative Director</li><li>Custom dashboard</li><li>Live Slack channel</li><li>Source files included</li></ul>
-        </div>
         <a class="cta cta-glow plan-cta" href="#book">Let’s talk<span class="sr-only"> about Team</span></a>
       </li>
       <li class="plan" data-level="10" data-speed="2.2">
@@ -1113,13 +1187,51 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
           <p class="plan-k">Everything in essentials, plus</p>
           <ul class="plan-list"><li>Branding &amp; visual identity</li><li>Retail-ready packaging design</li><li>Creative consultation</li></ul>
         </div>
-        <div class="plan-sec last">
-          <p class="plan-k">Collaboration</p>
-          <ul class="plan-list"><li>Dedicated Creative Director</li><li>Custom dashboard</li><li>Live Slack channel</li><li>Source files included</li></ul>
-        </div>
         <a class="cta cta-line plan-cta" href="#book">Tell me more<span class="sr-only"> about Powerhouse</span></a>
       </li>
     </ol>
+    <div class="plans-all" data-reveal>
+      <p class="plan-k">Collaboration <span>· Included in every plan</span></p>
+      <ul class="plan-list"><li>Dedicated Creative Director</li><li>Custom dashboard</li><li>Live Slack channel</li><li>Source files included</li></ul>
+    </div>
+    <div class="req" data-reveal aria-labelledby="req-t">
+      <p class="req-label"><span>05b /</span> <span>Requests</span></p>
+      <div class="req-head">
+        <h3 class="req-title" id="req-t">What fits in one request?</h3>
+        <p class="req-lede">Here is how much you can typically expect to be done for each project request.</p>
+      </div>
+      <ul class="req-cards">
+        <li class="req-card">
+          <p class="req-top"><span>Video</span><span>1 request</span></p>
+          <div class="req-vis" aria-hidden="true"><i class="req-vid on"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i><i class="req-vid"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i><i class="req-vid"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i></div>
+          <div class="req-body"><p class="req-n"><b>1 – 3</b><span>Videos</span></p><p class="req-d">Optimized for performance.</p></div>
+        </li>
+        <li class="req-card">
+          <p class="req-top"><span>Static ads</span><span>1 request</span></p>
+          <div class="req-vis" aria-hidden="true"><div class="req-grid"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="req-body"><p class="req-n"><b>12 – 24</b><span>Static ads</span></p><p class="req-d">A full batch of sizes and variations.</p></div>
+        </li>
+        <li class="req-card">
+          <p class="req-top"><span>Email</span><span>1 request</span></p>
+          <div class="req-vis" aria-hidden="true"><i class="req-wire"><b></b><u></u><s></s><s></s><em></em></i><i class="req-wire"><b></b><u></u><s></s><s></s><em></em></i><i class="req-wire"><b></b><u></u><s></s><s></s><em></em></i></div>
+          <div class="req-body"><p class="req-n"><b>2 – 3</b><span>Email designs</span></p><p class="req-d">A welcome flow or a campaign set.</p></div>
+        </li>
+        <li class="req-card">
+          <p class="req-top"><span>Web</span><span>1 request</span></p>
+          <div class="req-vis" aria-hidden="true"><i class="req-wire page"><b></b><u></u><s></s><span><u></u><u></u><u></u></span><s></s><s></s><em></em></i></div>
+          <div class="req-body"><p class="req-n"><b>1 full</b><span>Landing page</span></p><p class="req-d">Designed top to bottom.</p></div>
+        </li>
+      </ul>
+      <p class="req-foot">Every request comes back in 24 – 48 hours. Mix and match from week to week.</p>
+    </div>
+    <aside class="army-x" data-reveal aria-labelledby="army-x-t">
+      <div class="army-x-copy">
+        <p class="plan-k">Creator Army</p>
+        <h3 id="army-x-t">Want to learn about our network of thousands of UGC creators?</h3>
+        <p>We build a curated army of influencers posting about your business every month.</p>
+      </div>
+      <a class="cta army-x-cta" href="#book">Learn more<span class="sr-only"> about Creator Army</span></a>
+    </aside>
   </div>
 </section>
 
