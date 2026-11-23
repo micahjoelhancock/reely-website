@@ -484,6 +484,22 @@ main:focus, section:focus { outline: none; }
 .plan-cta { margin: auto 23px 23px; min-height: 48px; }
 .plan-cta.cta-line { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1px var(--hair); }
 .plan-cta.cta-glow { box-shadow: 0 0 14px rgba(226, 56, 43, .55); }
+.plan .plan-sec:nth-last-child(2) { border-bottom: 0; }
+.plans-all { display: flex; align-items: center; gap: 12px 40px; flex-wrap: wrap; margin-top: 9px; padding: 22px 23px; background: #fff; border: 1px solid var(--hair); border-radius: 6px; box-shadow: 0 8px 12px rgba(20, 20, 20, .06); }
+.plans-all .plan-k span { color: var(--ink-2); }
+.plans-all .plan-list { display: flex; flex-wrap: wrap; gap: 0 32px; margin: 0 0 0 auto; }
+.army-x { display: flex; align-items: center; justify-content: space-between; gap: 24px 48px; margin-top: 40px; padding: 30px 32px; background: var(--ink); color: var(--ivory); border-radius: 6px; }
+.army-x .plan-k { color: var(--red-hi); }
+.army-x h3 { margin-top: 10px; font: 600 24px/30px var(--f-body); letter-spacing: -.01em; }
+.army-x-copy > p:last-child { margin-top: 6px; font: 400 16px/24px var(--f-body); opacity: .75; }
+.army-x-cta { flex: none; min-width: 200px; min-height: 48px; }
+@media (max-width: 960px) {
+  .plans-all, .army-x { max-width: 520px; margin-inline: auto; }
+  .plans-all { flex-direction: column; align-items: flex-start; margin-top: 16px; }
+  .plans-all .plan-list { flex-direction: column; margin: 0; }
+  .army-x { flex-direction: column; align-items: flex-start; margin-top: 32px; padding: 26px 23px; }
+  .army-x-cta { width: 100%; }
+}
 
 /* ---------- 11. Case studies ---------- */
 .cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 9px; margin-top: 64px; }
@@ -1068,10 +1084,6 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
           <p class="plan-k">What you get</p>
           <ul class="plan-list"><li>Ads &amp; social media</li><li>Video editing</li><li>Web &amp; email design</li><li>Presentation design</li><li>Custom illustration</li></ul>
         </div>
-        <div class="plan-sec last">
-          <p class="plan-k">Collaboration</p>
-          <ul class="plan-list"><li>Dedicated Creative Director</li><li>Custom dashboard</li><li>Live Slack channel</li><li>Source files included</li></ul>
-        </div>
         <a class="cta cta-line plan-cta" href="#book">I’m interested<span class="sr-only"> in Sidekick</span></a>
       </li>
       <li class="plan pop" data-level="5" data-speed="1.1">
@@ -1091,10 +1103,6 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
           <p class="plan-k">Everything in essentials, plus</p>
           <ul class="plan-list"><li>Animation / Motion Graphics</li><li>AI video content</li><li>Higher volume</li></ul>
         </div>
-        <div class="plan-sec last">
-          <p class="plan-k">Collaboration</p>
-          <ul class="plan-list"><li>Dedicated Creative Director</li><li>Custom dashboard</li><li>Live Slack channel</li><li>Source files included</li></ul>
-        </div>
         <a class="cta cta-glow plan-cta" href="#book">Let’s talk<span class="sr-only"> about Team</span></a>
       </li>
       <li class="plan" data-level="10" data-speed="2.2">
@@ -1113,13 +1121,21 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
           <p class="plan-k">Everything in essentials, plus</p>
           <ul class="plan-list"><li>Branding &amp; visual identity</li><li>Retail-ready packaging design</li><li>Creative consultation</li></ul>
         </div>
-        <div class="plan-sec last">
-          <p class="plan-k">Collaboration</p>
-          <ul class="plan-list"><li>Dedicated Creative Director</li><li>Custom dashboard</li><li>Live Slack channel</li><li>Source files included</li></ul>
-        </div>
         <a class="cta cta-line plan-cta" href="#book">Tell me more<span class="sr-only"> about Powerhouse</span></a>
       </li>
     </ol>
+    <div class="plans-all" data-reveal>
+      <p class="plan-k">Collaboration <span>· Included in every plan</span></p>
+      <ul class="plan-list"><li>Dedicated Creative Director</li><li>Custom dashboard</li><li>Live Slack channel</li><li>Source files included</li></ul>
+    </div>
+    <aside class="army-x" data-reveal aria-labelledby="army-x-t">
+      <div class="army-x-copy">
+        <p class="plan-k">Creator Army</p>
+        <h3 id="army-x-t">Want to learn about our network of thousands of influencers?</h3>
+        <p>We build a curated army of creators posting about your business every month.</p>
+      </div>
+      <a class="cta army-x-cta" href="/creator-army">Learn more<span class="sr-only"> about Creator Army</span></a>
+    </aside>
   </div>
 </section>
 
