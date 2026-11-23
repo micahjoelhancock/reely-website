@@ -488,11 +488,12 @@ main:focus, section:focus { outline: none; }
 .plans-all { display: flex; align-items: center; gap: 12px 40px; flex-wrap: wrap; margin-top: 9px; padding: 22px 23px; background: #fff; border: 1px solid var(--hair); border-radius: 6px; box-shadow: 0 8px 12px rgba(20, 20, 20, .06); }
 .plans-all .plan-k span { color: var(--ink-2); }
 .plans-all .plan-list { display: flex; flex-wrap: wrap; gap: 0 32px; margin: 0 0 0 auto; }
-.army-x { display: flex; align-items: center; justify-content: space-between; gap: 24px 48px; margin-top: 40px; padding: 30px 32px; background: var(--ink); color: var(--ivory); border-radius: 6px; }
-.army-x .plan-k { color: var(--red-hi); }
+.army-x { display: flex; align-items: center; justify-content: space-between; gap: 24px 48px; margin-top: 40px; padding: 30px 32px; background: #ee8a2a; color: var(--ink); border-radius: 6px; }
+.army-x .plan-k { color: var(--ink); }
 .army-x h3 { margin-top: 10px; font: 600 24px/30px var(--f-body); letter-spacing: -.01em; }
-.army-x-copy > p:last-child { margin-top: 6px; font: 400 16px/24px var(--f-body); opacity: .75; }
-.army-x-cta { flex: none; min-width: 200px; min-height: 48px; }
+.army-x-copy > p:last-child { margin-top: 6px; font: 400 16px/24px var(--f-body); opacity: .8; }
+.army-x-cta { flex: none; min-width: 200px; min-height: 48px; background: var(--ink); color: var(--ivory); }
+.army-x-cta:hover, .army-x-cta:focus-visible { color: var(--ink); }
 @media (max-width: 960px) {
   .plans-all, .army-x { max-width: 520px; margin-inline: auto; }
   .plans-all { flex-direction: column; align-items: flex-start; margin-top: 16px; }
@@ -1131,8 +1132,8 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
     <aside class="army-x" data-reveal aria-labelledby="army-x-t">
       <div class="army-x-copy">
         <p class="plan-k">Creator Army</p>
-        <h3 id="army-x-t">Want to learn about our network of thousands of influencers?</h3>
-        <p>We build a curated army of creators posting about your business every month.</p>
+        <h3 id="army-x-t">Want to learn about our network of thousands of UGC creators?</h3>
+        <p>We build a curated army of influencers posting about your business every month.</p>
       </div>
       <a class="cta army-x-cta" href="/creator-army">Learn more<span class="sr-only"> about Creator Army</span></a>
     </aside>
