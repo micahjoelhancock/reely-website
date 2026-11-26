@@ -500,18 +500,21 @@ main:focus, section:focus { outline: none; }
 .req-top span:last-child { color: #cf2e22; }
 .req-vis { display: flex; align-items: center; justify-content: center; gap: 8px; height: 132px; background: var(--ivory); border-block: 1px solid var(--hair); }
 .req-vis i { display: block; font-style: normal; }
-.req-vis .req-vid { display: grid; place-items: center; width: 52px; height: 92px; border: 1px dashed rgba(20, 20, 20, .35); border-radius: 5px; background: #fff; color: rgba(20, 20, 20, .35); }
+.req-vids { display: flex; gap: 5px; }
+.req-vis .req-vid { display: grid; place-items: center; width: 30px; height: 54px; border: 1px dashed rgba(20, 20, 20, .35); border-radius: 5px; background: #fff; color: rgba(20, 20, 20, .35); }
+.req-vid svg { width: 12px; height: 12px; }
 .req-vid.on { border: 0; background: var(--ink); color: var(--red); }
-.req-grid { display: grid; grid-template-columns: repeat(8, 22px); gap: 5px; }
-.req-grid i { height: 22px; border: 1px dashed rgba(20, 20, 20, .35); border-radius: 2px; background: #fff; }
+.req-grid { display: grid; grid-template-columns: repeat(10, 20px); gap: 5px; }
+.req-grid i { height: 20px; border: 1px dashed rgba(20, 20, 20, .35); border-radius: 2px; background: #fff; }
 .req-grid i.on { border: 0; background: var(--red); }
-.req-wire { display: flex !important; flex-direction: column; gap: 4px; width: 58px; height: 96px; padding: 6px; background: #fff; border: 1px solid rgba(20, 20, 20, .35); border-radius: 3px; overflow: hidden; }
+.req-wire { display: flex !important; flex-direction: column; gap: 4px; width: 44px; height: 84px; padding: 5px; background: #fff; border: 1px solid rgba(20, 20, 20, .35); border-radius: 3px; overflow: hidden; }
 .req-wire > * { display: block; flex: none; border-radius: 1px; text-decoration: none; }
 .req-wire b { width: 40%; height: 4px; background: var(--red); }
-.req-wire u { height: 32px; background: #d2c4b2; }
+.req-wire u { height: 28px; background: #d2c4b2; }
 .req-wire s { height: 3px; background: rgba(20, 20, 20, .3); }
 .req-wire s + s { width: 80%; }
-.req-wire em { width: 50%; height: 7px; border-radius: 2px; background: var(--ink); }
+.req-wire em { width: 50%; height: 6px; border-radius: 2px; background: var(--ink); }
+.req-wire.opt { border-style: dashed; opacity: .55; }
 .req-wire.page { width: 150px; height: 112px; }
 .req-wire.page b { width: 30%; }
 .req-wire.page u { height: 30px; }
@@ -536,12 +539,14 @@ main:focus, section:focus { outline: none; }
 @media (max-width: 560px) {
   .req-cards { gap: 8px; }
   .req-vis { height: 104px; gap: 5px; }
-  .req-vid { width: 34px; height: 60px; }
-  .req-vid svg { width: 12px; height: 12px; }
-  .req-grid { grid-template-columns: repeat(6, 16px); gap: 4px; }
-  .req-grid i { height: 16px; }
-  .req-wire { width: 36px; height: 68px; padding: 4px; gap: 3px; }
-  .req-wire u { height: 20px; }
+  .req-vids { display: grid; grid-template-columns: repeat(4, 22px); gap: 4px; }
+  .req-vis .req-vid { width: 22px; height: 40px; }
+  .req-vid svg { width: 9px; height: 9px; }
+  .req-grid { grid-template-columns: repeat(6, 13px); gap: 3px; }
+  .req-grid i { height: 13px; }
+  .req-vis:has(.req-wire) { gap: 4px; }
+  .req-wire { width: 23px; height: 50px; padding: 3px; gap: 3px; }
+  .req-wire u { height: 12px; }
   .req-wire.page { width: 100px; height: 84px; }
   .req-wire.page u { height: 20px; }
   .req-wire.page span u { height: 10px; }
@@ -1203,18 +1208,18 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
       <ul class="req-cards">
         <li class="req-card">
           <p class="req-top"><span>Video</span><span>1 request</span></p>
-          <div class="req-vis" aria-hidden="true"><i class="req-vid on"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i><i class="req-vid"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i><i class="req-vid"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i></div>
-          <div class="req-body"><p class="req-n"><b>1 – 3</b><span>Videos</span></p><p class="req-d">Optimized for performance.</p></div>
+          <div class="req-vis" aria-hidden="true"><div class="req-vids"><i class="req-vid on"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i><i class="req-vid on"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i><i class="req-vid on"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i><i class="req-vid on"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i><i class="req-vid on"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i><i class="req-vid"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i><i class="req-vid"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 3l8 5-8 5V3z" fill="currentColor"/></svg></i></div></div>
+          <div class="req-body"><p class="req-n"><b>5 – 7</b><span>Videos</span></p><p class="req-d">Optimized for performance.</p></div>
         </li>
         <li class="req-card">
           <p class="req-top"><span>Static ads</span><span>1 request</span></p>
-          <div class="req-vis" aria-hidden="true"><div class="req-grid"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          <div class="req-body"><p class="req-n"><b>12 – 24</b><span>Static ads</span></p><p class="req-d">A full batch of sizes and variations.</p></div>
+          <div class="req-vis" aria-hidden="true"><div class="req-grid"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="req-body"><p class="req-n"><b>20 – 30</b><span>Static ads</span></p><p class="req-d">A full batch of sizes and variations.</p></div>
         </li>
         <li class="req-card">
           <p class="req-top"><span>Email</span><span>1 request</span></p>
-          <div class="req-vis" aria-hidden="true"><i class="req-wire"><b></b><u></u><s></s><s></s><em></em></i><i class="req-wire"><b></b><u></u><s></s><s></s><em></em></i><i class="req-wire"><b></b><u></u><s></s><s></s><em></em></i></div>
-          <div class="req-body"><p class="req-n"><b>2 – 3</b><span>Email designs</span></p><p class="req-d">A welcome flow or a campaign set.</p></div>
+          <div class="req-vis" aria-hidden="true"><i class="req-wire"><b></b><u></u><s></s><s></s><em></em></i><i class="req-wire"><b></b><u></u><s></s><s></s><em></em></i><i class="req-wire"><b></b><u></u><s></s><s></s><em></em></i><i class="req-wire"><b></b><u></u><s></s><s></s><em></em></i><i class="req-wire opt"><b></b><u></u><s></s><s></s><em></em></i></div>
+          <div class="req-body"><p class="req-n"><b>4 – 5</b><span>Email designs</span></p><p class="req-d">A welcome flow or a campaign set.</p></div>
         </li>
         <li class="req-card">
           <p class="req-top"><span>Web</span><span>1 request</span></p>
@@ -1305,7 +1310,7 @@ html:not(.js) .cal-stage, .cal-panel.cal-failed .cal-stage { min-height: 320px; 
         <details><summary><span class="qt" aria-hidden="true">01</span><span class="q">Why not just hire in-house?</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>Because we’re more affordable, more reliable, and you don’t have to manage us. You get the full benefit of a specialized team without carrying the overhead risk.</p></div></details>
         <details><summary><span class="qt" aria-hidden="true">02</span><span class="q">What are your turnaround times?</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>24-48 hours.</p></div></details>
         <details><summary><span class="qt" aria-hidden="true">03</span><span class="q">How does the pause feature work?</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>Have a slow few weeks coming up? Pause and resume as needed. No thirty-day notice, no nonsense.</p></div></details>
-        <details><summary><span class="qt" aria-hidden="true">04</span><span class="q">How much work is considered a “project request?”</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>An example would be 1-3 videos or 12-24 static ads. Multiple email designs or a full landing page can also be designed in 24-48 hours.</p></div></details>
+        <details><summary><span class="qt" aria-hidden="true">04</span><span class="q">How much work is considered a “project request?”</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>An example would be 5-7 videos or 20-30 static ads. Multiple email designs or a full landing page can also be designed in 24-48 hours.</p></div></details>
       </div>
       <div class="faq-col">
         <details><summary><span class="qt" aria-hidden="true">05</span><span class="q">What if I don’t like the first draft?</span><i class="plus" aria-hidden="true">+</i></summary><div class="a"><p>Most revisions land the same day or early the next. We’re your ongoing partner, so there’s no limit on drafts.</p></div></details>
